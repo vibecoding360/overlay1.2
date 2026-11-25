@@ -1,0 +1,2648 @@
+<!DOCTYPE html>
+<html lang="en" class="dark" data-theme="solar-orange" data-anim="subtle">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BRO_STUDIES — MARATHON LIVE</title>
+
+  <!-- Broadcast Typography: Space Grotesk, Inter, and JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@600;700;800&family=Space+Grotesk:wght@600;700&display=swap"
+    rel="stylesheet"
+  />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            display: ['Space Grotesk', 'Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    /* =========================================================================
+       THEME DESIGN TOKENS (6 PROFESSIONAL BROADCAST THEMES — SUNSET ORANGE DEFAULT)
+       ========================================================================= */
+    :root,
+    [data-theme="solar-orange"] {
+      --bg-rgb: 242, 159, 88;
+      --surface-rgb: 28, 15, 8;
+      --primary: #FFFFFF;
+      --primary-rgb: 255, 255, 255;
+      --secondary: #FDE68A;
+      --secondary-rgb: 253, 230, 138;
+      --timer-grad: linear-gradient(180deg, #ffffff 0%, #fffbeb 72%, #fde68a 100%);
+      --timer-break-grad: linear-gradient(180deg, #fef9c3 0%, #fde047 65%, #f59e0b 100%);
+      --text-main: #ffffff;
+      --text-muted: #fef3c7;
+      --border-subtle: rgba(255, 255, 255, 0.22);
+      --glow-color: rgba(255, 255, 255, 0.28);
+      --glow-break: rgba(253, 224, 71, 0.36);
+      --particle-rgb: 254, 243, 199;
+    }
+
+    [data-theme="obsidian-neon"] {
+      --bg-rgb: 5, 8, 13;
+      --surface-rgb: 10, 14, 22;
+      --primary: #00FF66;
+      --primary-rgb: 0, 255, 102;
+      --secondary: #FF5E00;
+      --secondary-rgb: 255, 94, 0;
+      --timer-grad: linear-gradient(180deg, #eafff2 0%, #00FF66 55%, #00cc52 100%);
+      --timer-break-grad: linear-gradient(180deg, #fff2e6 0%, #FF5E00 60%, #d94c00 100%);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-subtle: rgba(255, 255, 255, 0.1);
+      --glow-color: rgba(0, 255, 102, 0.34);
+      --glow-break: rgba(255, 94, 0, 0.38);
+      --particle-rgb: 0, 255, 102;
+    }
+
+    [data-theme="ultra-minimal"] {
+      --bg-rgb: 4, 4, 5;
+      --surface-rgb: 12, 12, 14;
+      --primary: #00FF66;
+      --primary-rgb: 0, 255, 102;
+      --secondary: #FF5E00;
+      --secondary-rgb: 255, 94, 0;
+      --timer-grad: linear-gradient(180deg, #ffffff 0%, #e2e8f0 100%);
+      --timer-break-grad: linear-gradient(180deg, #fff5eb 0%, #ff8533 100%);
+      --text-main: #ffffff;
+      --text-muted: #8a94a6;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --glow-color: rgba(255, 255, 255, 0.16);
+      --glow-break: rgba(255, 94, 0, 0.28);
+      --particle-rgb: 255, 255, 255;
+    }
+
+    [data-theme="cyber-studio"] {
+      --bg-rgb: 7, 11, 20;
+      --surface-rgb: 12, 19, 34;
+      --primary: #00F0FF;
+      --primary-rgb: 0, 240, 255;
+      --secondary: #00FF66;
+      --secondary-rgb: 0, 255, 102;
+      --timer-grad: linear-gradient(135deg, #e0fbff 0%, #00F0FF 48%, #00FF66 100%);
+      --timer-break-grad: linear-gradient(135deg, #fff0e6 0%, #FF5E00 50%, #ff9900 100%);
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --border-subtle: rgba(0, 240, 255, 0.18);
+      --glow-color: rgba(0, 240, 255, 0.34);
+      --glow-break: rgba(255, 94, 0, 0.38);
+      --particle-rgb: 0, 240, 255;
+    }
+
+    [data-theme="midnight-blue"] {
+      --bg-rgb: 6, 13, 28;
+      --surface-rgb: 11, 23, 46;
+      --primary: #38BDF8;
+      --primary-rgb: 56, 189, 248;
+      --secondary: #818CF8;
+      --secondary-rgb: 129, 140, 248;
+      --timer-grad: linear-gradient(180deg, #ffffff 0%, #bae6fd 55%, #38BDF8 100%);
+      --timer-break-grad: linear-gradient(180deg, #fff7ed 0%, #fb923c 100%);
+      --text-main: #f8fafc;
+      --text-muted: #93a8c7;
+      --border-subtle: rgba(56, 189, 248, 0.16);
+      --glow-color: rgba(56, 189, 248, 0.3);
+      --glow-break: rgba(251, 146, 60, 0.34);
+      --particle-rgb: 56, 189, 248;
+    }
+
+    [data-theme="premium-amoled"] {
+      --bg-rgb: 0, 0, 0;
+      --surface-rgb: 8, 8, 10;
+      --primary: #F59E0B;
+      --primary-rgb: 245, 158, 11;
+      --secondary: #FBBF24;
+      --secondary-rgb: 251, 191, 36;
+      --timer-grad: linear-gradient(180deg, #ffffff 0%, #f1f5f9 75%, #cbd5e1 100%);
+      --timer-break-grad: linear-gradient(180deg, #fef3c7 0%, #F59E0B 100%);
+      --text-main: #ffffff;
+      --text-muted: #787f8c;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --glow-color: rgba(255, 255, 255, 0.14);
+      --glow-break: rgba(245, 158, 11, 0.32);
+      --particle-rgb: 245, 158, 11;
+    }
+
+    /* =========================================================================
+       CORE LAYOUT, TYPOGRAPHY & ALPHA TRANSPARENCY
+       ========================================================================= */
+    * {
+      box-sizing: border-box;
+    }
+
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+
+    /* Setup view uses soft sunset orange-to-amber gradient */
+    body {
+      background: linear-gradient(135deg, #F48C5E 0%, #F29F58 50%, #D98245 100%);
+      background-attachment: fixed;
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    /* Live Broadcast mode: alpha transparency controlled by --live-bg-alpha */
+    html.live-mode,
+    html.live-mode body {
+      background: transparent !important;
+      background-color: transparent !important;
+      overflow: hidden;
+    }
+
+    /* Alpha Grid preview checkerboard (only when toggled on with G) */
+    html.live-mode.alpha-grid-on body {
+      background-color: #090d14 !important;
+      background-image:
+        linear-gradient(45deg, #131b29 25%, transparent 25%),
+        linear-gradient(-45deg, #131b29 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #131b29 75%),
+        linear-gradient(-45deg, transparent 75%, #131b29 75%) !important;
+      background-size: 28px 28px !important;
+      background-position: 0 0, 0 14px, 14px -14px, -14px 0 !important;
+    }
+
+    /* Live Canvas Backdrop Layer (supports 0% to 100% opacity) */
+    #live-backdrop {
+      background-color: rgba(var(--bg-rgb), var(--live-bg-alpha, 1));
+      transition: background-color 0.25s ease;
+    }
+
+    html[data-theme="solar-orange"] #live-backdrop {
+      background-image: linear-gradient(
+        135deg,
+        rgba(244, 140, 94, var(--live-bg-alpha, 1)) 0%,
+        rgba(242, 159, 88, var(--live-bg-alpha, 1)) 52%,
+        rgba(217, 130, 69, var(--live-bg-alpha, 1)) 100%
+      );
+    }
+
+    /* Subtle Theme Glass Panel */
+    .glass-card {
+      background: rgba(var(--surface-rgb), 0.82);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 20px 56px -16px rgba(0, 0, 0, 0.72);
+    }
+
+    /* =========================================================================
+       LEVEL 1 HERO TIMER TYPOGRAPHY & ANIMATIONS
+       ========================================================================= */
+    .hero-digits {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 800;
+      font-size: clamp(4.5rem, 13.5vw, 15rem);
+      line-height: 0.92;
+      letter-spacing: -0.045em;
+      white-space: nowrap;
+      background: var(--timer-grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 28px var(--glow-color)) drop-shadow(0 10px 24px rgba(0, 0, 0, 0.45));
+      transition: font-size 0.35s cubic-bezier(0.22, 1, 0.36, 1), filter 0.4s ease, transform 0.35s ease;
+      user-select: none;
+    }
+
+    /* Even larger scale in Presentation & Minimal display modes */
+    #live-view[data-display="presentation"] .hero-digits,
+    #live-view[data-display="minimal"] .hero-digits {
+      font-size: clamp(5.5rem, 16vw, 18rem);
+    }
+
+    /* Break phase shifts digits to break gradient */
+    #live-view[data-phase="break"] .hero-digits {
+      background: var(--timer-break-grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 32px var(--glow-break)) drop-shadow(0 10px 24px rgba(0, 0, 0, 0.45));
+    }
+
+    /* Breathing Glow Animation (Subtle & Cinematic) */
+    @keyframes timerBreathe {
+      0%, 100% {
+        filter: drop-shadow(0 0 22px var(--glow-color)) drop-shadow(0 10px 24px rgba(0, 0, 0, 0.45));
+      }
+      50% {
+        filter: drop-shadow(0 0 42px var(--glow-color)) drop-shadow(0 10px 24px rgba(0, 0, 0, 0.45));
+      }
+    }
+
+    html[data-anim="subtle"] #live-view[data-running="true"][data-phase="focus"] .hero-digits {
+      animation: timerBreathe 5.5s ease-in-out infinite;
+    }
+
+    html[data-anim="cinematic"] #live-view[data-running="true"][data-phase="focus"] .hero-digits {
+      animation: timerBreathe 3.4s ease-in-out infinite;
+    }
+
+    /* Start / Completion Pulse */
+    @keyframes stagePulse {
+      0% { transform: scale(1); }
+      45% { transform: scale(1.035); }
+      100% { transform: scale(1); }
+    }
+    .pulse-once {
+      animation: stagePulse 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* Horizontal Stopwatch Sweep Bar */
+    @keyframes sweepLine {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(260%); }
+    }
+    .bar-sweep-active {
+      width: 38%;
+      background: linear-gradient(90deg, transparent, var(--primary), var(--secondary), transparent);
+      animation: sweepLine 2.6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+    .bar-sweep-paused {
+      width: 100%;
+      background: linear-gradient(90deg, rgba(var(--primary-rgb), 0.25), rgba(var(--secondary-rgb), 0.25));
+      animation: none;
+    }
+
+    /* Circular SVG Progress Ring */
+    #ring-wrapper {
+      width: min(74vh, 74vw, 740px);
+      height: min(74vh, 74vw, 740px);
+      pointer-events: none;
+      transition: opacity 0.35s ease, transform 0.45s ease;
+    }
+    #ring-progress-circle {
+      transition: stroke-dashoffset 0.35s linear, stroke 0.45s ease;
+      filter: drop-shadow(0 0 12px var(--glow-color));
+    }
+    #live-view[data-phase="break"] #ring-progress-circle {
+      filter: drop-shadow(0 0 14px var(--glow-break));
+    }
+
+    /* Cyber Studio subtle animated accent border */
+    @keyframes cyberEdge {
+      0%, 100% { opacity: 0.35; }
+      50% { opacity: 0.85; }
+    }
+    html[data-theme="cyber-studio"]:not([data-anim="off"]) #cyber-frame {
+      display: block;
+      animation: cyberEdge 4s ease-in-out infinite;
+    }
+    #cyber-frame {
+      display: none;
+    }
+
+    /* Respect OS Reduced Motion Preference */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* =========================================================================
+       IMPROVED NON-OVERLAPPING BOTTOM AGENDA & AUTO-HIDING BROADCAST DOCK
+       ========================================================================= */
+    #live-bottom-agenda {
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+      transform: translateY(-64px);
+    }
+
+    body.dock-hidden #live-bottom-agenda {
+      transform: translateY(0);
+    }
+
+    .auto-hide-dock {
+      transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    body.dock-hidden .auto-hide-dock {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(20px);
+    }
+    body.dock-hidden .auto-hide-dock:hover,
+    body.dock-hidden .auto-hide-dock:focus-within {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    /* Sidebar quick-add tray auto-collapses when dock hides */
+    .sidebar-tray {
+      overflow: hidden;
+      max-height: 80px;
+      opacity: 1;
+      transition: max-height 0.35s ease, opacity 0.3s ease, margin 0.35s ease, padding 0.35s ease;
+    }
+    body.dock-hidden .sidebar-tray {
+      max-height: 0 !important;
+      opacity: 0 !important;
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+      border-top-color: transparent !important;
+      pointer-events: none;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(28, 15, 8, 0.35);
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.32);
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.6);
+    }
+  </style>
+</head>
+<body class="font-sans antialiased selection:bg-white/25 selection:text-white">
+
+  <!-- ==================== NON-BLOCKING TOAST NOTIFICATION ==================== -->
+  <div id="toast-box" class="fixed top-5 right-5 z-[90] hidden max-w-sm">
+    <div class="rounded-2xl bg-[#1c0f08]/95 border border-amber-200/40 shadow-2xl px-4 py-3 flex items-center gap-3 backdrop-blur-xl">
+      <span class="h-2 w-2 rounded-full bg-[#F29F58] shrink-0 shadow-[0_0_8px_#F29F58]"></span>
+      <p id="toast-msg" class="text-xs sm:text-sm font-medium text-white"></p>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       VIEW 1: STUDIO SETUP (SOFT SUNSET ORANGE-TO-AMBER WORKSPACE)
+       ========================================================================= -->
+  <div id="setup-view" class="min-h-screen w-full flex flex-col bg-gradient-to-br from-[#F48C5E] via-[#F29F58] to-[#D98245]">
+
+    <!-- Setup Top Bar -->
+    <header class="sticky top-0 z-30 w-full border-b border-white/20 bg-[#1c0f08]/80 backdrop-blur-xl">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex flex-wrap items-center justify-between gap-3">
+        <div class="flex items-center gap-3">
+          <div class="h-5 w-1.5 rounded-full bg-gradient-to-b from-white to-[#F29F58]"></div>
+          <span class="font-display text-lg font-bold tracking-tight text-white">BRO_STUDIES</span>
+          <span class="text-[10px] sm:text-xs font-mono font-bold tracking-widest uppercase px-2.5 py-0.5 rounded-md bg-[#F29F58]/20 text-amber-100 border border-amber-200/40">
+            MARATHON LIVE • STUDIO 2.0
+          </span>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2">
+          <button
+            type="button"
+            onclick="copyDirectLiveLink()"
+            class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold border border-white/15 bg-black/35 hover:bg-black/50 text-white transition cursor-pointer"
+          >
+            Copy Live Link
+          </button>
+          <button
+            type="button"
+            onclick="openExportModal()"
+            class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold border border-white/15 bg-black/35 hover:border-amber-200/60 text-white flex items-center gap-1.5 transition cursor-pointer"
+          >
+            <svg class="w-4 h-4 text-amber-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+            </svg>
+            <span>Export HTML</span>
+          </button>
+          <button
+            type="button"
+            onclick="launchLiveBroadcast()"
+            class="px-4 py-2 rounded-xl text-xs sm:text-sm font-display font-bold bg-white hover:bg-amber-50 text-[#b45309] shadow-lg shadow-black/20 transition cursor-pointer"
+          >
+            LAUNCH MARATHON LIVE →
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Setup Workspace Content -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-8 space-y-6">
+
+      <!-- COMPACT COLLAPSIBLE QUICK START GUIDE -->
+      <section class="rounded-2xl bg-[#1c0f08]/80 backdrop-blur-xl border border-white/15 overflow-hidden shadow-xl">
+        <button
+          type="button"
+          onclick="toggleQuickGuide()"
+          class="w-full px-5 py-3.5 flex items-center justify-between gap-3 text-left hover:bg-white/[0.04] transition cursor-pointer"
+        >
+          <div class="flex items-center gap-2.5">
+            <span class="h-2 w-2 rounded-full bg-[#F29F58] shadow-[0_0_8px_#F29F58]"></span>
+            <span class="font-mono text-xs font-bold uppercase tracking-widest text-white">
+              QUICK START GUIDE — 1920×1080 LIVE BROADCAST SETUP
+            </span>
+          </div>
+          <span id="guide-toggle-label" class="text-xs font-mono text-amber-100/80">Hide ▲</span>
+        </button>
+
+        <div id="quick-guide-body" class="px-5 pb-4 pt-1 border-t border-white/10">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mt-2">
+            <div class="rounded-xl bg-black/35 border border-white/10 p-3.5 flex items-start gap-3">
+              <span class="h-6 w-6 rounded-lg bg-[#F29F58]/20 border border-[#F29F58]/50 text-amber-100 font-mono text-xs font-bold flex items-center justify-center shrink-0">1</span>
+              <p class="text-xs text-amber-50/85 leading-relaxed">
+                <strong class="text-white block mb-0.5">Configure Session &amp; Visual Theme</strong>
+                Set your channel name, session title, timer mode, visual theme, and today's study agenda below.
+              </p>
+            </div>
+            <div class="rounded-xl bg-black/35 border border-white/10 p-3.5 flex items-start gap-3">
+              <span class="h-6 w-6 rounded-lg bg-[#F29F58]/20 border border-[#F29F58]/50 text-amber-100 font-mono text-xs font-bold flex items-center justify-center shrink-0">2</span>
+              <p class="text-xs text-amber-50/85 leading-relaxed">
+                <strong class="text-white block mb-0.5">Launch Live or Copy Direct Link</strong>
+                Click <span class="text-white font-semibold">LAUNCH MARATHON LIVE</span> for instant full-screen view, or copy your Direct Live Link.
+              </p>
+            </div>
+            <div class="rounded-xl bg-black/35 border border-white/10 p-3.5 flex items-start gap-3">
+              <span class="h-6 w-6 rounded-lg bg-white/15 border border-white/30 text-white font-mono text-xs font-bold flex items-center justify-center shrink-0">3</span>
+              <p class="text-xs text-amber-50/85 leading-relaxed">
+                <strong class="text-white block mb-0.5">Go Fullscreen or Add Browser Source</strong>
+                Press <kbd class="px-1.5 py-0.5 rounded bg-white/15 font-mono text-[10px] text-white">F</kbd> for Fullscreen, or add the URL/HTML as a <strong class="text-white">1920×1080 Browser Source</strong> in your streaming software.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MODULAR CONFIGURATION GRID -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+
+        <!-- LEFT COLUMN (7 cols): Identity, Timer Engine, Visual Studio, Progress & Motion -->
+        <div class="lg:col-span-7 space-y-6">
+
+          <!-- MODULE A: IDENTITY & SESSION -->
+          <section class="rounded-3xl bg-[#1c0f08]/80 backdrop-blur-xl border border-white/15 p-5 sm:p-6 relative overflow-hidden shadow-xl">
+            <div class="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-white via-amber-200 to-[#F29F58]"></div>
+            <div class="flex items-center justify-between mb-4">
+              <h2 class="font-display text-base font-bold text-white flex items-center gap-2">
+                <span class="h-2 w-2 rounded-full bg-[#F29F58]"></span>
+                Identity &amp; Session
+              </h2>
+              <span class="text-[11px] font-mono text-amber-100/75">TOP BAR &amp; HERO TITLE</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="in-channel" class="block text-[11px] font-mono font-bold uppercase tracking-wider text-amber-100 mb-1.5">
+                  Channel / Brand Name
+                </label>
+                <input
+                  id="in-channel"
+                  type="text"
+                  oninput="syncConfigFromInputs()"
+                  placeholder="BRO_STUDIES"
+                  class="w-full rounded-xl bg-black/40 border border-white/15 focus:border-amber-200 px-3.5 py-2.5 text-sm text-white placeholder-amber-100/40 outline-none transition"
+                />
+              </div>
+
+              <div>
+                <label for="in-title" class="block text-[11px] font-mono font-bold uppercase tracking-wider text-amber-100 mb-1.5">
+                  Session Title
+                </label>
+                <input
+                  id="in-title"
+                  type="text"
+                  oninput="syncConfigFromInputs()"
+                  placeholder="MARATHON LIVE"
+                  class="w-full rounded-xl bg-black/40 border border-white/15 focus:border-amber-200 px-3.5 py-2.5 text-sm text-white placeholder-amber-100/40 outline-none transition"
+                />
+              </div>
+
+              <div>
+                <label for="in-tagline" class="block text-[11px] font-mono font-bold uppercase tracking-wider text-amber-100 mb-1.5">
+                  Tagline / Subtitle
+                </label>
+                <input
+                  id="in-tagline"
+                  type="text"
+                  oninput="syncConfigFromInputs()"
+                  placeholder="DEEP FOCUS • NO DISTRACTIONS"
+                  class="w-full rounded-xl bg-black/40 border border-white/15 focus:border-amber-200 px-3.5 py-2.5 text-sm text-white placeholder-amber-100/40 outline-none transition"
+                />
+              </div>
+
+              <div>
+                <label for="in-social" class="block text-[11px] font-mono font-bold uppercase tracking-wider text-amber-100 mb-1.5">
+                  Social Handle (Optional)
+                </label>
+                <input
+                  id="in-social"
+                  type="text"
+                  oninput="syncConfigFromInputs()"
+                  placeholder="@bro_studies"
+                  class="w-full rounded-xl bg-black/40 border border-white/15 focus:border-amber-200 px-3.5 py-2.5 text-sm text-white placeholder-amber-100/40 outline-none transition"
+                />
+              </div>
+
+              <div>
+                <label for="in-logo" class="block text-[11px] font-mono font-bold uppercase tracking-wider text-amber-100 mb-1.5">
+                  Custom Logo URL (Optional)
+                </label>
+                <input
+                  id="in-logo"
+                  type="url"
+                  oninput="syncConfigFromInputs()"
+                  placeholder="https://... (uses initials badge if empty)"
+                  class="w-full rounded-xl bg-black/40 border border-white/15 focus:border-amber-200 px-3.5 py-2.5 text-sm text-white placeholder-amber-100/40 outline-none transition"
+                />
+              </div>
+
+              <div>
+                <label for="in-goal-hours" class="block text-[11px] font-mono font-bold uppercase tracking-wider text-amber-100 mb-1.5">
+                  Daily Focus Goal (Hours)
+                </label>
+                <input
+                  id="in-goal-hours"
+                  type="number"
+                  min="1"
+                  max="24"
+                  step="0.5"
+                  oninput="syncConfigFromInputs()"
+                  class="w-full rounded-xl bg-black/40 border border-white/15 focus:border-amber-200 px-3.5 py-2.5 text-sm text-white outline-none tabular-nums"
+                />
+                <p class="text-[11px] text-amber-100/65 mt-1">Used to calculate live Daily Goal % progress.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- MODULE B: TIMER ENGINE -->
+          <section class="rounded-3xl bg-[#1c0f08]/80 backdrop-blur-xl border border-white/15 p-5 sm:p-6 shadow-xl">
+            <div class="flex items-center justify-between mb-4">
+              <h2 class="font-display text-base font-bold text-white flex items-center gap-2">
+                <span class="h-2 w-2 rounded-full bg-amber-200"></span>
+                Timer Engine
+              </h2>
+              <span class="text-[11px] font-mono text-amber-100/75">DRIFT-FREE WALL CLOCK</span>
+            </div>
+
+            <div class="space-y-4">
+              <div>
+                <label for="in-mode" class="block text-[11px] font-mono font-bold uppercase tracking-wider text-amber-100 mb-1.5">
+                  Timer Mode
+                </label>
+                <select
+                  id="in-mode"
+                  onchange="handleTimerModeChange()"
+                  class="w-full rounded-xl bg-[#24130a] border border-white/15 focus:border-amber-200 px-3.5 py-2.5 text-sm text-white outline-none cursor-pointer"
+                >
+                  <option value="stopwatch">Stopwatch (Open-Ended Marathon)</option>
+                  <option value="pomodoro50">Pomodoro (50m Focus / 10m Break)</option>
+                  <option value="pomodoro25">Pomodoro (25m Focus / 5m Break)</option>
+                  <option value="countdown">Marathon Countdown (Custom Duration)</option>
+                </select>
+                <p id="mode-helper-hint" class="text-xs text-amber-100/75 mt-1.5">
+                  Counts upward continuously with no time limit — ideal for open-ended study marathons.
+                </p>
+              </div>
+
+              <!-- Custom Countdown Inputs -->
+              <div id="countdown-box" class="hidden rounded-2xl bg-black/35 border border-amber-200/35 p-4">
+                <p class="text-[11px] font-mono font-bold uppercase tracking-wider text-amber-200 mb-2.5">
+                  Custom Countdown Duration
+                </p>
+                <div class="grid grid-cols-2 gap-3">
+                  <div>
+                    <label for="in-cd-hours" class="block text-xs text-amber-100/80 mb-1">Hours</label>
+                    <input
+                      id="in-cd-hours"
+                      type="number"
+                      min="0"
+                      max="99"
+                      oninput="syncConfigFromInputs(true)"
+                      class="w-full rounded-xl bg-black/45 border border-white/15 focus:border-amber-200 px-3 py-2 text-sm text-white outline-none tabular-nums"
+                    />
+                  </div>
+                  <div>
+                    <label for="in-cd-mins" class="block text-xs text-amber-100/80 mb-1">Minutes</label>
+                    <input
+                      id="in-cd-mins"
+                      type="number"
+                      min="0"
+                      max="59"
+                      oninput="syncConfigFromInputs(true)"
+                      class="w-full rounded-xl bg-black/45 border border-white/15 focus:border-amber-200 px-3 py-2 text-sm text-white outline-none tabular-nums"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Engine Toggles -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                <label class="flex items-center justify-between gap-3 rounded-xl bg-black/35 border border-white/10 px-4 py-3 cursor-pointer">
+                  <div>
+                    <span class="block text-xs font-semibold text-white">Phase Chime Audio</span>
+                    <span class="block text-[11px] text-amber-100/70">Dual-tone chime on block end</span>
+                  </div>
+                  <input id="in-sound" type="checkbox" onchange="syncConfigFromInputs()" class="h-4 w-4 accent-[#F29F58] cursor-pointer" />
+                </label>
+
+                <label class="flex items-center justify-between gap-3 rounded-xl bg-black/35 border border-white/10 px-4 py-3 cursor-pointer">
+                  <div>
+                    <span class="block text-xs font-semibold text-white">Show Tenths (.0)</span>
+                    <span class="block text-[11px] text-amber-100/70">Sub-second decimal readout</span>
+                  </div>
+                  <input id="in-decimals" type="checkbox" onchange="syncConfigFromInputs()" class="h-4 w-4 accent-[#F29F58] cursor-pointer" />
+                </label>
+              </div>
+            </div>
+          </section>
+
+          <!-- MODULE C: VISUAL STUDIO (6 THEMES) -->
+          <section class="rounded-3xl bg-[#1c0f08]/80 backdrop-blur-xl border border-white/15 p-5 sm:p-6 shadow-xl">
+            <div class="flex items-center justify-between mb-4">
+              <h2 class="font-display text-base font-bold text-white flex items-center gap-2">
+                <span class="h-2 w-2 rounded-full bg-[#F29F58]"></span>
+                Visual Studio — 6 Broadcast Themes
+              </h2>
+              <span class="text-[11px] font-mono text-amber-100/75">INSTANT PREVIEW</span>
+            </div>
+
+            <div id="theme-swatches" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
+              <!-- Rendered dynamically via JS -->
+            </div>
+          </section>
+
+          <!-- MODULE D: PROGRESS, MOTION & DISPLAY LAYOUT -->
+          <section class="rounded-3xl bg-[#1c0f08]/80 backdrop-blur-xl border border-white/15 p-5 sm:p-6 shadow-xl">
+            <div class="flex items-center justify-between mb-4">
+              <h2 class="font-display text-base font-bold text-white flex items-center gap-2">
+                <span class="h-2 w-2 rounded-full bg-amber-200"></span>
+                Progress, Motion &amp; Broadcast Layout
+              </h2>
+              <span class="text-[11px] font-mono text-amber-100/75">1920×1080 CANVAS</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="in-progress-style" class="block text-[11px] font-mono font-bold uppercase tracking-wider text-amber-100 mb-1.5">
+                  Progress Indicator
+                </label>
+                <select
+                  id="in-progress-style"
+                  onchange="syncConfigFromInputs()"
+                  class="w-full rounded-xl bg-[#24130a] border border-white/15 focus:border-amber-200 px-3.5 py-2.5 text-sm text-white outline-none cursor-pointer"
+                >
+                  <option value="circular">Circular Progress Ring (Hero Halo)</option>
+                  <option value="bar">Horizontal Progress Bar</option>
+                  <option value="none">None (Clean Digits Only)</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="in-anim" class="block text-[11px] font-mono font-bold uppercase tracking-wider text-amber-100 mb-1.5">
+                  Animation Intensity
+                </label>
+                <select
+                  id="in-anim"
+                  onchange="syncConfigFromInputs()"
+                  class="w-full rounded-xl bg-[#24130a] border border-white/15 focus:border-amber-200 px-3.5 py-2.5 text-sm text-white outline-none cursor-pointer"
+                >
+                  <option value="off">Off (Zero Motion)</option>
+                  <option value="subtle">Subtle (Recommended)</option>
+                  <option value="cinematic">Cinematic (Ambient Particles + Glow)</option>
+                </select>
+                <p class="text-[11px] text-amber-100/65 mt-1">Subtle recommended for 6+ hour marathons.</p>
+              </div>
+
+              <div>
+                <label for="in-display-mode" class="block text-[11px] font-mono font-bold uppercase tracking-wider text-amber-100 mb-1.5">
+                  Default Display Mode (Keys 1–5)
+                </label>
+                <select
+                  id="in-display-mode"
+                  onchange="syncConfigFromInputs()"
+                  class="w-full rounded-xl bg-[#24130a] border border-white/15 focus:border-amber-200 px-3.5 py-2.5 text-sm text-white outline-none cursor-pointer"
+                >
+                  <option value="ultra">1 — Ultra Cinematic (Default)</option>
+                  <option value="full">2 — Full Broadcast</option>
+                  <option value="focus">3 — Focus (Timer + Current Task)</option>
+                  <option value="presentation">4 — Presentation (Mega Timer + Title)</option>
+                  <option value="minimal">5 — Minimal (Pure Digits Only)</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="in-agenda-layout" class="block text-[11px] font-mono font-bold uppercase tracking-wider text-amber-100 mb-1.5">
+                  Session Agenda Layout
+                </label>
+                <select
+                  id="in-agenda-layout"
+                  onchange="syncConfigFromInputs()"
+                  class="w-full rounded-xl bg-[#24130a] border border-white/15 focus:border-amber-200 px-3.5 py-2.5 text-sm text-white outline-none cursor-pointer"
+                >
+                  <option value="minimal">Minimal (Current Task + Next Up)</option>
+                  <option value="ticker">Bottom Ticker Strip</option>
+                  <option value="sidebar">Right Sidebar (Compact Fit)</option>
+                </select>
+              </div>
+
+              <!-- Background Opacity Slider -->
+              <div class="sm:col-span-2 rounded-2xl bg-black/35 border border-white/10 p-4">
+                <div class="flex items-center justify-between mb-2">
+                  <label for="in-opacity" class="text-[11px] font-mono font-bold uppercase tracking-wider text-amber-100">
+                    Live Background Opacity
+                  </label>
+                  <span id="opacity-readout" class="font-mono text-xs font-bold text-amber-200 tabular-nums">100%</span>
+                </div>
+                <input
+                  id="in-opacity"
+                  type="range"
+                  min="0"
+                  max="100"
+                  step="5"
+                  oninput="syncConfigFromInputs()"
+                  class="w-full accent-[#F29F58] cursor-pointer"
+                />
+                <p class="text-[11px] text-amber-100/75 mt-1.5">
+                  Set to <strong class="text-white">100%</strong> for a solid sunset orange-to-amber canvas; lower to <strong class="text-white">0%</strong> for a transparent overlay over your webcam or study scene.
+                </p>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- RIGHT COLUMN (5 cols): Session Agenda Editor, Launch CTA, Direct URL & Keyboard Shortcuts -->
+        <div class="lg:col-span-5 space-y-6">
+
+          <!-- MODULE E: INTERACTIVE SESSION AGENDA EDITOR -->
+          <section class="rounded-3xl bg-[#1c0f08]/80 backdrop-blur-xl border border-white/15 p-5 sm:p-6 shadow-xl">
+            <div class="flex items-center justify-between mb-1">
+              <h2 class="font-display text-base font-bold text-white flex items-center gap-2">
+                <span class="h-2 w-2 rounded-full bg-amber-200"></span>
+                Session Agenda
+              </h2>
+              <span id="setup-task-count" class="font-mono text-xs text-amber-200 tabular-nums">5 tasks</span>
+            </div>
+            <p class="text-[11px] text-amber-100/75 mb-4">
+              Recommended: 3–6 tasks for clean readability on stream.
+            </p>
+
+            <!-- Interactive Add Form -->
+            <form onsubmit="handleSetupAddTask(event)" class="flex gap-2 mb-3.5">
+              <input
+                id="setup-new-task"
+                type="text"
+                placeholder="Add a study task..."
+                class="flex-1 rounded-xl bg-black/40 border border-white/15 focus:border-amber-200 px-3.5 py-2 text-xs sm:text-sm text-white placeholder-amber-100/40 outline-none"
+              />
+              <button
+                type="submit"
+                class="px-4 py-2 rounded-xl bg-[#F29F58]/25 hover:bg-[#F29F58]/40 border border-amber-200/40 text-white text-xs font-bold transition cursor-pointer shrink-0"
+              >
+                + Add
+              </button>
+            </form>
+
+            <!-- Reorderable Task List -->
+            <ul id="setup-agenda-list" class="space-y-2 max-h-[290px] overflow-y-auto pr-1"></ul>
+
+            <!-- Quick Reset Tasks Helper -->
+            <div class="mt-3.5 pt-3 border-t border-white/10 flex items-center justify-between text-[11px]">
+              <button type="button" onclick="uncheckAllTasks()" class="text-amber-100/75 hover:text-white transition cursor-pointer">
+                Uncheck All
+              </button>
+              <button type="button" onclick="restoreDefaultTasks()" class="text-amber-100/75 hover:text-amber-200 transition cursor-pointer">
+                Restore Default Tasks
+              </button>
+            </div>
+          </section>
+
+          <!-- PRIMARY LAUNCH & DIRECT LIVE LINK CARD -->
+          <section class="rounded-3xl bg-[#1c0f08]/80 backdrop-blur-xl border border-white/25 p-5 sm:p-6 space-y-4 shadow-xl">
+            <button
+              type="button"
+              onclick="launchLiveBroadcast()"
+              class="w-full py-4 px-6 rounded-2xl bg-white hover:bg-amber-50 active:scale-[0.99] text-[#b45309] font-display font-bold text-base tracking-wide shadow-xl shadow-black/20 transition flex items-center justify-center gap-2 cursor-pointer"
+            >
+              <span>LAUNCH MARATHON LIVE</span>
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </button>
+
+            <div class="pt-3 border-t border-white/10 space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-[11px] font-mono font-bold uppercase tracking-wider text-amber-100">
+                  DIRECT LIVE LINK (BROWSER SOURCE)
+                </span>
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-white/10 text-white border border-white/20">
+                  1920 × 1080
+                </span>
+              </div>
+              <div class="flex gap-2">
+                <input
+                  id="direct-live-url"
+                  type="text"
+                  readonly
+                  class="flex-1 rounded-xl bg-black/40 border border-white/15 px-3 py-2 text-xs font-mono text-amber-50 outline-none select-all"
+                />
+                <button
+                  type="button"
+                  onclick="copyDirectLiveLink()"
+                  class="px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-xs font-semibold text-white transition cursor-pointer shrink-0"
+                >
+                  Copy
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <!-- KEYBOARD SHORTCUTS REFERENCE CARD -->
+          <section class="rounded-3xl bg-[#1c0f08]/80 backdrop-blur-xl border border-white/15 p-5 sm:p-6 shadow-xl">
+            <h2 class="font-display text-sm font-bold uppercase tracking-wider text-white mb-3 flex items-center gap-2">
+              <span class="h-2 w-2 rounded-full bg-[#F29F58]"></span>
+              Live Keyboard Shortcuts
+            </h2>
+            <div class="grid grid-cols-2 gap-2 text-xs">
+              <div class="flex items-center justify-between rounded-xl bg-black/35 border border-white/10 px-3 py-2">
+                <span class="text-amber-100/80">Start / Pause</span>
+                <kbd class="px-2 py-0.5 rounded bg-white/15 font-mono text-[11px] font-bold text-white">Space</kbd>
+              </div>
+              <div class="flex items-center justify-between rounded-xl bg-black/35 border border-white/10 px-3 py-2">
+                <span class="text-amber-100/80">Reset Timer</span>
+                <kbd class="px-2 py-0.5 rounded bg-white/15 font-mono text-[11px] font-bold text-white">R</kbd>
+              </div>
+              <div class="flex items-center justify-between rounded-xl bg-black/35 border border-white/10 px-3 py-2">
+                <span class="text-amber-100/80">Fullscreen</span>
+                <kbd class="px-2 py-0.5 rounded bg-white/15 font-mono text-[11px] font-bold text-white">F</kbd>
+              </div>
+              <div class="flex items-center justify-between rounded-xl bg-black/35 border border-white/10 px-3 py-2">
+                <span class="text-amber-100/80">Hide / Show Dock</span>
+                <kbd class="px-2 py-0.5 rounded bg-white/15 font-mono text-[11px] font-bold text-white">H</kbd>
+              </div>
+              <div class="flex items-center justify-between rounded-xl bg-black/35 border border-white/10 px-3 py-2">
+                <span class="text-amber-100/80">Alpha Grid</span>
+                <kbd class="px-2 py-0.5 rounded bg-white/15 font-mono text-[11px] font-bold text-white">G</kbd>
+              </div>
+              <div class="flex items-center justify-between rounded-xl bg-black/35 border border-white/10 px-3 py-2">
+                <span class="text-amber-100/80">Mute / Unmute</span>
+                <kbd class="px-2 py-0.5 rounded bg-white/15 font-mono text-[11px] font-bold text-white">M</kbd>
+              </div>
+              <div class="col-span-2 flex items-center justify-between rounded-xl bg-black/35 border border-white/10 px-3 py-2">
+                <span class="text-amber-100/80">Switch Display Mode (Ultra / Full / Focus / Present / Minimal)</span>
+                <kbd class="px-2 py-0.5 rounded bg-white/15 font-mono text-[11px] font-bold text-amber-200">1 – 5</kbd>
+              </div>
+            </div>
+          </section>
+
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- =========================================================================
+       VIEW 2: LIVE BROADCAST VIEW (1920x1080 FULL-SCREEN CINEMATIC CANVAS)
+       ========================================================================= -->
+  <div
+    id="live-view"
+    data-display="ultra"
+    data-phase="focus"
+    data-running="false"
+    class="hidden fixed inset-0 w-screen h-screen overflow-hidden select-none"
+  >
+    <!-- Adjustable Opacity Backdrop (Soft Sunset Orange-to-Amber by default) -->
+    <div id="live-backdrop" class="absolute inset-0 z-0 pointer-events-none"></div>
+
+    <!-- Ambient Cinematic Particle Canvas (active only in Cinematic animation mode) -->
+    <canvas id="ambient-canvas" class="absolute inset-0 z-0 pointer-events-none hidden"></canvas>
+
+    <!-- Cyber Studio Subtle Perimeter Frame -->
+    <div id="cyber-frame" class="absolute inset-3 z-0 rounded-3xl border border-[#00F0FF]/25 pointer-events-none"></div>
+
+    <!-- MAIN FULL-SCREEN BROADCAST STAGE -->
+    <div class="relative z-10 w-full h-full flex flex-col justify-between p-5 sm:p-7 lg:p-9">
+
+      <!-- LEVEL 5 (SUBTLE): TOP BROADCAST HEADER BAR -->
+      <header id="live-top-bar" class="w-full flex items-start justify-between gap-4 shrink-0 transition-opacity duration-300">
+        <!-- Top-Left: BRO_STUDIES Brand Identity -->
+        <div id="live-brand-block" class="flex items-center gap-3.5">
+          <div id="live-logo-box" class="h-10 w-10 sm:h-11 sm:w-11 rounded-xl border border-white/20 bg-black/35 backdrop-blur-md flex items-center justify-center overflow-hidden shrink-0">
+            <span id="live-logo-initials" class="font-display text-sm sm:text-base font-bold" style="color: var(--primary);">BS</span>
+            <img id="live-logo-img" src="" alt="Channel Logo" class="hidden h-full w-full object-cover" onerror="handleLogoError()" />
+          </div>
+          <div>
+            <div id="live-channel-name" class="font-display text-lg sm:text-xl lg:text-2xl font-bold tracking-tight leading-none text-white">
+              BRO_STUDIES
+            </div>
+            <div id="live-tagline" class="font-mono text-[10px] sm:text-xs font-semibold uppercase tracking-[0.2em] mt-1" style="color: var(--text-muted);">
+              DEEP FOCUS • NO DISTRACTIONS
+            </div>
+          </div>
+        </div>
+
+        <!-- Top-Right: Pulsing LIVE Indicator + Social Handle -->
+        <div id="live-status-block" class="flex flex-col items-end gap-1.5">
+          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-black/35 backdrop-blur-md border border-white/15">
+            <span id="live-pulse-dot" class="h-2.5 w-2.5 rounded-full animate-pulse" style="background: var(--primary); box-shadow: 0 0 12px var(--primary);"></span>
+            <span class="font-mono text-xs sm:text-sm font-bold tracking-[0.18em] uppercase text-white">
+              MARATHON LIVE
+            </span>
+          </div>
+          <span id="live-social-handle" class="hidden font-mono text-xs tracking-wider px-1" style="color: var(--text-muted);">
+            @bro_studies
+          </span>
+        </div>
+      </header>
+
+      <!-- CENTER BROADCAST HERO STAGE + OPTIONAL RIGHT SIDEBAR -->
+      <div id="live-stage-row" class="flex-1 w-full min-h-0 flex items-center justify-center gap-6 lg:gap-10 my-2">
+
+        <!-- HERO TIMER CORE COLUMN -->
+        <div class="flex-1 min-w-0 h-full flex flex-col items-center justify-center relative">
+
+          <!-- CIRCULAR SVG PROGRESS RING HALO (Centered Behind Hero Timer) -->
+          <div id="ring-wrapper" class="absolute inset-0 m-auto flex items-center justify-center">
+            <svg viewBox="0 0 400 400" class="w-full h-full -rotate-90">
+              <circle
+                cx="200"
+                cy="200"
+                r="186"
+                fill="none"
+                stroke="rgba(255,255,255,0.18)"
+                stroke-width="5"
+              />
+              <circle
+                id="ring-progress-circle"
+                cx="200"
+                cy="200"
+                r="186"
+                fill="none"
+                stroke="var(--primary)"
+                stroke-width="6"
+                stroke-linecap="round"
+                stroke-dasharray="1168.67"
+                stroke-dashoffset="0"
+              />
+            </svg>
+          </div>
+
+          <!-- LEVEL 2 (PROMINENT): SESSION TITLE & PHASE PILL -->
+          <div id="live-title-group" class="relative z-10 flex flex-col items-center text-center mb-3 sm:mb-5">
+            <div id="live-phase-pill" class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border mb-2.5 bg-black/30 backdrop-blur-md">
+              <span id="live-phase-dot" class="h-1.5 w-1.5 rounded-full"></span>
+              <span id="live-phase-text" class="font-mono text-[11px] sm:text-xs font-bold uppercase tracking-[0.22em]">
+                OPEN MARATHON
+              </span>
+            </div>
+            <h1 id="live-session-title" class="font-display text-2xl sm:text-4xl lg:text-[42px] font-bold uppercase tracking-[0.14em] text-white leading-tight drop-shadow-[0_4px_18px_rgba(0,0,0,0.45)]">
+              MARATHON LIVE
+            </h1>
+          </div>
+
+          <!-- LEVEL 1 (DOMINANT): MASSIVE CENTRAL HERO TIMER -->
+          <div id="hero-timer-stage" class="relative z-10 flex flex-col items-center justify-center">
+            <div id="live-hero-timer" class="hero-digits tabular-nums" aria-live="off">00:00:00</div>
+
+            <!-- Circular Progress Percentage Readout -->
+            <div id="ring-percent-badge" class="hidden mt-3 font-mono text-xs sm:text-sm font-bold tracking-[0.2em] uppercase px-3 py-1 rounded-full bg-black/30 border border-white/15 tabular-nums" style="color: var(--primary);">
+              0% COMPLETE
+            </div>
+
+            <!-- Horizontal Progress Bar (Shown when Progress Indicator = Horizontal Bar) -->
+            <div id="horiz-progress-wrap" class="hidden mt-5 w-[min(76vw,680px)] h-1.5 rounded-full bg-black/25 overflow-hidden relative">
+              <div id="horiz-progress-fill" class="h-full rounded-full transition-all duration-300 bar-sweep-paused"></div>
+            </div>
+          </div>
+
+          <!-- LEVEL 4 (SECONDARY): 4-METRIC TELEMETRY STRIP -->
+          <div id="live-telemetry-strip" class="relative z-10 mt-6 sm:mt-8 flex flex-wrap items-center justify-center gap-6 sm:gap-10 lg:gap-14 px-6 py-3 rounded-2xl bg-black/30 backdrop-blur-md border border-white/15">
+            <div class="text-center">
+              <div class="font-mono text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em]" style="color: var(--text-muted);">
+                TOTAL FOCUS
+              </div>
+              <div id="stat-total-focus" class="font-mono text-xl sm:text-2xl lg:text-[28px] font-extrabold tabular-nums mt-0.5" style="color: var(--primary);">
+                00:00:00
+              </div>
+            </div>
+            <div class="hidden sm:block h-8 w-px bg-white/15"></div>
+            <div class="text-center">
+              <div class="font-mono text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em]" style="color: var(--text-muted);">
+                SESSIONS
+              </div>
+              <div id="stat-sessions" class="font-mono text-xl sm:text-2xl lg:text-[28px] font-extrabold text-white tabular-nums mt-0.5">
+                00
+              </div>
+            </div>
+            <div class="hidden sm:block h-8 w-px bg-white/15"></div>
+            <div class="text-center">
+              <div class="font-mono text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em]" style="color: var(--text-muted);">
+                DAILY GOAL
+              </div>
+              <div id="stat-daily-goal" class="font-mono text-xl sm:text-2xl lg:text-[28px] font-extrabold text-white tabular-nums mt-0.5">
+                0%
+              </div>
+            </div>
+            <div class="hidden sm:block h-8 w-px bg-white/15"></div>
+            <div class="text-center">
+              <div class="font-mono text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em]" style="color: var(--text-muted);">
+                TASKS DONE
+              </div>
+              <div id="stat-tasks-done" class="font-mono text-xl sm:text-2xl lg:text-[28px] font-extrabold tabular-nums mt-0.5" style="color: var(--secondary);">
+                0 / 5
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- LEVEL 3 (AGENDA MODE C): COMPACT CONTENT-HUGGING RIGHT SIDEBAR -->
+        <aside
+          id="live-agenda-sidebar"
+          class="hidden w-[320px] xl:w-[360px] shrink-0 glass-card rounded-3xl p-5 relative overflow-hidden"
+          style="height: fit-content; align-self: center; min-height: 0;"
+        >
+          <div class="absolute inset-y-0 left-0 w-[3px]" style="background: linear-gradient(180deg, var(--primary), var(--secondary));"></div>
+          <div class="flex items-center justify-between gap-2 mb-3 pl-1">
+            <span class="font-mono text-xs font-bold uppercase tracking-[0.18em] text-white">SESSION AGENDA</span>
+            <span id="sidebar-pill" class="font-mono text-[11px] font-bold px-2.5 py-0.5 rounded-lg bg-white/10 border border-white/15 tabular-nums" style="color: var(--primary);">
+              0 / 5
+            </span>
+          </div>
+          <div class="w-full h-[2px] rounded-full bg-white/15 overflow-hidden mb-3">
+            <div id="sidebar-progress" class="h-full transition-all duration-300" style="width: 0%; background: linear-gradient(90deg, var(--primary), var(--secondary));"></div>
+          </div>
+          <ul id="sidebar-task-list" class="space-y-2 max-h-[50vh] overflow-y-auto pr-0.5"></ul>
+
+          <!-- Auto-collapsing Quick-Add when dock is active -->
+          <div class="sidebar-tray mt-3 pt-3 border-t border-white/10">
+            <form onsubmit="handleLiveQuickAdd(event)" class="flex gap-2">
+              <input
+                id="live-quick-add"
+                type="text"
+                placeholder="Add task..."
+                class="flex-1 rounded-xl bg-black/40 border border-white/15 focus:border-amber-200 px-3 py-1.5 text-xs text-white placeholder-amber-100/50 outline-none"
+              />
+              <button type="submit" class="px-3 py-1.5 rounded-xl bg-white/15 hover:bg-white/25 text-xs font-bold text-white cursor-pointer">
+                +
+              </button>
+            </form>
+          </div>
+        </aside>
+      </div>
+
+      <!-- LEVEL 3 (IMPROVED LOWER-THIRD): BOTTOM AGENDA BAR (GLIDES ABOVE DOCK WITH ZERO OVERLAP) -->
+      <footer id="live-bottom-agenda" class="w-full max-w-6xl mx-auto shrink-0">
+        <!-- Mode A: Minimal Current + Next Bar -->
+        <div
+          id="agenda-minimal-bar"
+          class="w-full flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 px-5 py-3 rounded-2xl bg-black/35 backdrop-blur-xl border border-white/15 shadow-lg shadow-black/20"
+        >
+          <button
+            type="button"
+            onclick="completeCurrentTask()"
+            title="Click to mark current task complete"
+            class="flex items-center gap-3 text-left group cursor-pointer min-w-0 flex-1"
+          >
+            <span
+              class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg font-mono text-[10px] sm:text-xs font-bold uppercase tracking-widest shrink-0 transition group-hover:brightness-110"
+              style="background: rgba(var(--primary-rgb), 0.14); color: var(--primary); border: 1px solid rgba(var(--primary-rgb), 0.35);"
+            >
+              <span class="h-1.5 w-1.5 rounded-full" style="background: var(--primary);"></span>
+              CURRENT TASK
+            </span>
+            <span id="minimal-current-task" class="text-sm sm:text-base font-semibold text-white group-hover:underline truncate">
+              Focus Block 1 — Core Concepts
+            </span>
+          </button>
+
+          <div class="hidden sm:block h-5 w-px bg-white/15 shrink-0"></div>
+
+          <div class="flex items-center gap-2 text-right shrink-0 max-w-full">
+            <span class="font-mono text-[10px] sm:text-xs font-bold uppercase tracking-widest shrink-0" style="color: var(--secondary);">
+              NEXT UP
+            </span>
+            <span id="minimal-next-task" class="text-xs sm:text-sm font-medium text-amber-50/90 truncate max-w-[280px]">
+              Active Recall &amp; Notes Revision
+            </span>
+          </div>
+        </div>
+
+        <!-- Mode B: Bottom Horizontal Ticker Strip -->
+        <div id="agenda-ticker-bar" class="hidden w-full px-4 py-2.5 rounded-2xl bg-black/35 backdrop-blur-xl border border-white/15 shadow-lg shadow-black/20">
+          <div id="ticker-items" class="flex items-center gap-2.5 overflow-x-auto pb-0.5"></div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- IMPROVED FLOATING AUTO-HIDING BROADCAST CONTROL DOCK -->
+    <div id="live-dock" class="auto-hide-dock fixed bottom-4 inset-x-0 z-40 px-4 flex justify-center pointer-events-none">
+      <div class="pointer-events-auto glass-card rounded-full px-2.5 py-1.5 flex flex-wrap items-center justify-center gap-1.5 max-w-[96vw]">
+        <!-- Group 1: Transport Controls -->
+        <button
+          id="dock-start-btn"
+          type="button"
+          onclick="toggleTimer()"
+          class="px-4 py-1.5 rounded-full font-display font-bold text-xs tracking-wide transition cursor-pointer min-w-[76px] shadow-sm"
+          style="background: var(--primary); color: #1c0f08;"
+        >
+          Start
+        </button>
+        <button
+          type="button"
+          onclick="openResetModal()"
+          class="px-3 py-1.5 rounded-full bg-white/[0.07] hover:bg-white/[0.15] border border-white/10 text-xs font-medium text-white transition cursor-pointer"
+        >
+          Reset
+        </button>
+        <button
+          id="dock-skip-btn"
+          type="button"
+          onclick="skipPhase()"
+          class="hidden px-3 py-1.5 rounded-full bg-[#F29F58]/25 hover:bg-[#F29F58]/40 border border-amber-200/35 text-xs font-semibold text-amber-100 transition cursor-pointer"
+        >
+          Skip
+        </button>
+
+        <div class="h-4 w-px bg-white/15 mx-0.5 hidden sm:block"></div>
+
+        <!-- Group 2: Display Mode Pills (1-5) -->
+        <div class="flex items-center gap-0.5 bg-black/45 rounded-full p-0.5 border border-white/10">
+          <button type="button" data-dm="ultra" onclick="setDisplayMode('ultra')" title="1: Ultra Cinematic" class="dm-btn w-6 h-6 rounded-full font-mono text-[11px] font-bold transition cursor-pointer flex items-center justify-center">1</button>
+          <button type="button" data-dm="full" onclick="setDisplayMode('full')" title="2: Full Broadcast" class="dm-btn w-6 h-6 rounded-full font-mono text-[11px] font-bold transition cursor-pointer flex items-center justify-center">2</button>
+          <button type="button" data-dm="focus" onclick="setDisplayMode('focus')" title="3: Focus Mode" class="dm-btn w-6 h-6 rounded-full font-mono text-[11px] font-bold transition cursor-pointer flex items-center justify-center">3</button>
+          <button type="button" data-dm="presentation" onclick="setDisplayMode('presentation')" title="4: Presentation Mode" class="dm-btn w-6 h-6 rounded-full font-mono text-[11px] font-bold transition cursor-pointer flex items-center justify-center">4</button>
+          <button type="button" data-dm="minimal" onclick="setDisplayMode('minimal')" title="5: Minimal Digits" class="dm-btn w-6 h-6 rounded-full font-mono text-[11px] font-bold transition cursor-pointer flex items-center justify-center">5</button>
+        </div>
+
+        <div class="h-4 w-px bg-white/15 mx-0.5 hidden sm:block"></div>
+
+        <!-- Group 3: Quick Broadcast Toggles -->
+        <button type="button" onclick="cycleTheme()" title="Cycle Visual Theme" class="px-2.5 py-1.5 rounded-full bg-white/[0.07] hover:bg-white/[0.15] border border-white/10 text-xs font-medium text-white transition cursor-pointer">
+          Theme
+        </button>
+        <button type="button" onclick="cycleAgendaLayout()" title="Cycle Agenda Layout" class="px-2.5 py-1.5 rounded-full bg-white/[0.07] hover:bg-white/[0.15] border border-white/10 text-xs font-medium text-white transition cursor-pointer">
+          Agenda
+        </button>
+        <button id="dock-sound-btn" type="button" onclick="toggleSound()" title="Mute / Unmute Chime (M)" class="px-2.5 py-1.5 rounded-full bg-white/[0.07] hover:bg-white/[0.15] border border-white/10 text-xs font-medium text-white transition cursor-pointer">
+          Sound: ON
+        </button>
+        <button id="dock-awake-btn" type="button" onclick="toggleWakeLock()" title="Prevent Screen Sleep" class="px-2.5 py-1.5 rounded-full bg-white/[0.07] hover:bg-white/[0.15] border border-white/10 text-xs font-medium text-white transition cursor-pointer">
+          Awake: OFF
+        </button>
+        <button id="dock-grid-btn" type="button" onclick="toggleAlphaGrid()" title="Preview Alpha Transparency (G)" class="px-2.5 py-1.5 rounded-full bg-white/[0.07] hover:bg-white/[0.15] border border-white/10 text-xs font-medium text-white transition cursor-pointer">
+          Grid
+        </button>
+        <button type="button" onclick="toggleFullscreen()" title="Toggle Fullscreen (F)" class="px-2.5 py-1.5 rounded-full bg-white/[0.07] hover:bg-white/[0.15] border border-white/10 text-xs font-medium text-white transition cursor-pointer">
+          Fullscreen
+        </button>
+        <button type="button" onclick="toggleShortcutsPopover()" title="Keyboard Shortcuts" class="w-7 h-7 rounded-full bg-white/[0.07] hover:bg-white/[0.15] border border-white/10 font-mono text-xs font-bold text-white transition cursor-pointer flex items-center justify-center">
+          ?
+        </button>
+
+        <div class="h-4 w-px bg-white/15 mx-0.5 hidden sm:block"></div>
+
+        <!-- Group 4: Studio Actions -->
+        <button type="button" onclick="switchView('setup')" class="px-3 py-1.5 rounded-full bg-[#F29F58]/30 hover:bg-[#F29F58]/45 border border-amber-200/40 text-xs font-semibold text-white transition cursor-pointer">
+          Setup
+        </button>
+        <button type="button" onclick="openExportModal()" class="px-3 py-1.5 rounded-full bg-white/[0.07] hover:bg-white/[0.15] border border-white/10 text-xs font-semibold text-white transition cursor-pointer">
+          Export
+        </button>
+      </div>
+    </div>
+
+    <!-- SHORTCUTS CHEAT-SHEET POPOVER (LIVE BROADCAST) -->
+    <div id="shortcuts-popover" class="hidden fixed bottom-20 left-1/2 -translate-x-1/2 z-50 glass-card rounded-2xl p-4 w-[320px] sm:w-[360px]">
+      <div class="flex items-center justify-between mb-2.5">
+        <span class="font-mono text-xs font-bold uppercase tracking-widest text-white">Keyboard Shortcuts</span>
+        <button type="button" onclick="toggleShortcutsPopover(false)" class="text-amber-100 hover:text-white text-sm font-bold cursor-pointer">×</button>
+      </div>
+      <div class="grid grid-cols-2 gap-1.5 text-[11px]">
+        <div class="flex justify-between bg-black/35 rounded-lg px-2.5 py-1.5"><span class="text-amber-100/80">Start/Pause</span><kbd class="font-mono text-white">Space</kbd></div>
+        <div class="flex justify-between bg-black/35 rounded-lg px-2.5 py-1.5"><span class="text-amber-100/80">Reset</span><kbd class="font-mono text-white">R</kbd></div>
+        <div class="flex justify-between bg-black/35 rounded-lg px-2.5 py-1.5"><span class="text-amber-100/80">Fullscreen</span><kbd class="font-mono text-white">F</kbd></div>
+        <div class="flex justify-between bg-black/35 rounded-lg px-2.5 py-1.5"><span class="text-amber-100/80">Hide Dock</span><kbd class="font-mono text-white">H</kbd></div>
+        <div class="flex justify-between bg-black/35 rounded-lg px-2.5 py-1.5"><span class="text-amber-100/80">Alpha Grid</span><kbd class="font-mono text-white">G</kbd></div>
+        <div class="flex justify-between bg-black/35 rounded-lg px-2.5 py-1.5"><span class="text-amber-100/80">Mute Chime</span><kbd class="font-mono text-white">M</kbd></div>
+        <div class="col-span-2 flex justify-between bg-black/35 rounded-lg px-2.5 py-1.5"><span class="text-amber-100/80">Display Modes</span><kbd class="font-mono text-amber-200">1 – 5</kbd></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL 1: RESET TIMER CONFIRMATION
+       ========================================================================= -->
+  <div id="reset-modal" class="fixed inset-0 z-[70] hidden bg-black/75 backdrop-blur-sm p-4 flex items-center justify-center">
+    <div class="max-w-sm w-full glass-card rounded-2xl p-5 border border-white/20">
+      <h3 class="font-display text-base font-bold text-white">Reset Current Timer?</h3>
+      <p class="text-xs text-amber-50/80 mt-1.5 leading-relaxed">
+        Resets the active timer block to zero. Your agenda tasks and cumulative total focus remain safe.
+      </p>
+      <div class="mt-4 flex items-center justify-end gap-2">
+        <button type="button" onclick="closeResetModal()" class="px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-xs font-semibold text-white cursor-pointer">
+          Cancel
+        </button>
+        <button type="button" onclick="confirmResetTimer()" class="px-3.5 py-2 rounded-xl bg-[#D98245] hover:brightness-110 text-xs font-bold text-white cursor-pointer">
+          Reset Timer
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL 2: EXPORT STANDALONE HTML & STREAMING GUIDE
+       ========================================================================= -->
+  <div id="export-modal" class="fixed inset-0 z-[80] hidden bg-black/80 backdrop-blur-md p-4 flex items-center justify-center">
+    <div class="max-w-3xl w-full glass-card rounded-3xl overflow-hidden flex flex-col max-h-[90vh]">
+      <div class="px-6 py-4 border-b border-white/15 flex items-center justify-between gap-3">
+        <div>
+          <h3 class="font-display text-base sm:text-lg font-bold text-white">Export Standalone HTML</h3>
+          <p class="text-xs text-amber-100/75">Packages your current settings as defaults into a single self-contained file</p>
+        </div>
+        <button type="button" onclick="closeExportModal()" class="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition cursor-pointer" aria-label="Close export modal">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Concise 3-Step Streaming Software Instructions -->
+      <div class="px-6 pt-4 pb-2">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-[11px]">
+          <div class="rounded-xl bg-black/40 border border-white/10 p-3">
+            <span class="font-mono font-bold text-amber-200">STEP 1 — SAVE FILE</span>
+            <p class="text-amber-50/85 mt-1">Download <span class="font-mono text-white">bro_studies_marathon_live.html</span> or copy the Direct Live Link.</p>
+          </div>
+          <div class="rounded-xl bg-black/40 border border-white/10 p-3">
+            <span class="font-mono font-bold text-amber-200">STEP 2 — BROWSER SOURCE</span>
+            <p class="text-amber-50/85 mt-1">Add as a <strong class="text-white">Browser Source</strong> in your streaming software at <strong class="text-white">1920 × 1080</strong>.</p>
+          </div>
+          <div class="rounded-xl bg-black/40 border border-white/10 p-3">
+            <span class="font-mono font-bold text-white">STEP 3 — CANVAS OPACITY</span>
+            <p class="text-amber-50/85 mt-1">Keep Opacity at <strong class="text-white">100%</strong> for soft sunset orange or <strong class="text-white">0%</strong> for transparent overlay.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="px-6 py-3 overflow-y-auto flex-1">
+        <textarea
+          id="export-code-area"
+          readonly
+          rows="13"
+          class="w-full rounded-2xl bg-black/55 border border-white/15 p-4 text-xs font-mono text-amber-50 leading-relaxed outline-none"
+        ></textarea>
+      </div>
+
+      <div class="px-6 py-4 border-t border-white/15 bg-black/40 flex flex-wrap items-center justify-end gap-2.5">
+        <button type="button" onclick="copyDirectLiveLink()" class="px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-xs sm:text-sm font-semibold text-white transition cursor-pointer">
+          Copy Direct Live Link
+        </button>
+        <button type="button" onclick="downloadStandaloneHtml()" class="px-3.5 py-2 rounded-xl bg-[#F29F58]/25 hover:bg-[#F29F58]/40 border border-amber-200/45 text-xs sm:text-sm font-semibold text-white transition cursor-pointer">
+          Download bro_studies_marathon_live.html
+        </button>
+        <button type="button" onclick="copyExportHtml()" class="px-4 py-2 rounded-xl bg-white hover:bg-amber-50 text-[#b45309] text-xs sm:text-sm font-bold transition cursor-pointer">
+          Copy HTML
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Optional Baked Export Defaults (populated automatically on Export) -->
+  <script id="baked-config-json" type="application/json">null</script>
+
+  <script>
+    // =========================================================================
+    // BRO_STUDIES — MARATHON LIVE (STUDIO 2.0 — SOFT SUNSET ORANGE EDITION)
+    // Drift-Free Wall-Clock Engine • 6 Themes • 5 Display Modes • Zero-Overlap HUD
+    // =========================================================================
+    const STORAGE_KEY = 'bro_studies_marathon_live_v2_sunset';
+    const RING_CIRCUMFERENCE = 2 * Math.PI * 186; // ~1168.67
+
+    const THEMES = [
+      { id: 'solar-orange', name: 'Solar Orange', desc: 'Soft sunset orange-to-amber + White', c1: '#F48C5E', c2: '#F29F58', c3: '#FDE68A' },
+      { id: 'obsidian-neon', name: 'Obsidian Neon', desc: 'Matte black + Neon Green & Orange', c1: '#05080d', c2: '#00FF66', c3: '#FF5E00' },
+      { id: 'ultra-minimal', name: 'Ultra Minimal', desc: 'Pure black + Crisp White + Green', c1: '#040405', c2: '#ffffff', c3: '#00FF66' },
+      { id: 'cyber-studio', name: 'Cyber Studio', desc: 'Dark slate + Cyan & Neon Green', c1: '#070b14', c2: '#00F0FF', c3: '#00FF66' },
+      { id: 'midnight-blue', name: 'Midnight Blue', desc: 'Deep navy + Electric Blue & White', c1: '#060d1c', c2: '#38BDF8', c3: '#818CF8' },
+      { id: 'premium-amoled', name: 'Premium AMOLED', desc: 'True #000000 + White & Amber', c1: '#000000', c2: '#ffffff', c3: '#F59E0B' },
+    ];
+
+    const MODE_HINTS = {
+      stopwatch: 'Counts upward continuously with no time limit — ideal for open-ended study marathons.',
+      pomodoro50: 'Alternates 50-minute deep focus blocks with 10-minute recovery breaks automatically.',
+      pomodoro25: 'Classic 25-minute sprint blocks followed by 5-minute quick breaks with chime alerts.',
+      countdown: 'Counts down from your custom hours & minutes target to 00:00:00 with completion chime.',
+    };
+
+    const DEFAULT_TASKS = [
+      { id: 1, text: 'Focus Block 1 — Core Concepts', done: false },
+      { id: 2, text: 'Active Recall & Notes Revision', done: false },
+      { id: 3, text: 'Practice Questions Set', done: false },
+      { id: 4, text: 'Speed Drill & Weak Areas', done: false },
+      { id: 5, text: 'Mock Review & Summary', done: false },
+    ];
+
+    const state = {
+      view: 'setup', // 'setup' | 'live'
+      config: {
+        channel: 'BRO_STUDIES',
+        title: 'MARATHON LIVE',
+        tagline: 'DEEP FOCUS • NO DISTRACTIONS',
+        social: '',
+        logoUrl: '',
+        dailyGoalHours: 8,
+        mode: 'stopwatch', // 'stopwatch' | 'pomodoro50' | 'pomodoro25' | 'countdown'
+        countdownHours: 6,
+        countdownMins: 0,
+        theme: 'solar-orange',
+        progressStyle: 'circular', // 'circular' | 'bar' | 'none'
+        animIntensity: 'subtle',   // 'off' | 'subtle' | 'cinematic'
+        bgOpacity: 100,            // 100 = solid soft sunset orange-to-amber background
+        displayMode: 'ultra',      // 'ultra' | 'full' | 'focus' | 'presentation' | 'minimal'
+        agendaLayout: 'minimal',   // 'minimal' | 'ticker' | 'sidebar'
+        soundEnabled: true,
+        showDecimals: false,
+      },
+      tasks: DEFAULT_TASKS.map((t) => ({ ...t })),
+      // Drift-Free Wall-Clock Runtime State
+      isRunning: false,
+      startedAt: null,
+      accumulatedMs: 0,
+      totalFocusMs: 0,
+      sessionsCompleted: 0,
+      phase: 'focus', // 'focus' | 'break'
+      // Transient Broadcast Controls
+      alphaGrid: false,
+      dockLockedHidden: false,
+      wakeLockActive: false,
+    };
+
+    let rafId = null;
+    let idleTimerId = null;
+    let toastTimerId = null;
+    let audioCtx = null;
+    let wakeLockSentinel = null;
+    let particleRafId = null;
+    let particles = [];
+
+    // ==================== HELPER UTILITIES ====================
+    function isPomodoro(m = state.config.mode) {
+      return m === 'pomodoro50' || m === 'pomodoro25';
+    }
+
+    function getPomodoroDurations(m = state.config.mode) {
+      if (m === 'pomodoro25') return { focusMs: 25 * 60000, breakMs: 5 * 60000, focusMin: 25, breakMin: 5 };
+      return { focusMs: 50 * 60000, breakMs: 10 * 60000, focusMin: 50, breakMin: 10 };
+    }
+
+    function getCountdownTargetMs() {
+      const h = Math.max(0, Number(state.config.countdownHours) || 0);
+      const m = Math.max(0, Math.min(59, Number(state.config.countdownMins) || 0));
+      const ms = (h * 3600 + m * 60) * 1000;
+      return ms > 0 ? ms : 3600 * 1000;
+    }
+
+    function getBlockTargetMs() {
+      if (isPomodoro()) {
+        const d = getPomodoroDurations();
+        return state.phase === 'focus' ? d.focusMs : d.breakMs;
+      }
+      if (state.config.mode === 'countdown') return getCountdownTargetMs();
+      return 0;
+    }
+
+    function escapeHtml(str) {
+      return String(str || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function showToast(msg) {
+      const box = document.getElementById('toast-box');
+      const el = document.getElementById('toast-msg');
+      el.textContent = msg;
+      box.classList.remove('hidden');
+      clearTimeout(toastTimerId);
+      toastTimerId = setTimeout(() => box.classList.add('hidden'), 3200);
+    }
+
+    // ==================== PERSISTENCE (BAKED DEFAULTS + localStorage + URL) ====================
+    function loadBakedDefaults() {
+      try {
+        const el = document.getElementById('baked-config-json');
+        if (!el || !el.textContent) return;
+        const baked = JSON.parse(el.textContent);
+        if (!baked || typeof baked !== 'object') return;
+        if (baked.config) Object.assign(state.config, baked.config);
+        if (Array.isArray(baked.tasks) && baked.tasks.length > 0) {
+          state.tasks = baked.tasks.map((t, i) => ({ id: i + 1, text: String(t.text || ''), done: Boolean(t.done) }));
+        }
+      } catch (e) {}
+    }
+
+    function persistState() {
+      try {
+        localStorage.setItem(
+          STORAGE_KEY,
+          JSON.stringify({
+            config: state.config,
+            tasks: state.tasks,
+            isRunning: state.isRunning,
+            startedAt: state.startedAt,
+            accumulatedMs: state.accumulatedMs,
+            totalFocusMs: state.totalFocusMs,
+            sessionsCompleted: state.sessionsCompleted,
+            phase: state.phase,
+          })
+        );
+      } catch (e) {}
+    }
+
+    function loadPersistedState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return;
+        const p = JSON.parse(raw);
+        if (!p || typeof p !== 'object') return;
+        if (p.config && typeof p.config === 'object') Object.assign(state.config, p.config);
+        if (Array.isArray(p.tasks)) {
+          state.tasks = p.tasks
+            .map((t, i) => ({ id: t.id || i + 1, text: String(t.text || '').trim(), done: Boolean(t.done) }))
+            .filter((t) => t.text.length > 0);
+        }
+        state.isRunning = Boolean(p.isRunning);
+        state.startedAt = Number.isFinite(p.startedAt) ? p.startedAt : null;
+        state.accumulatedMs = Number.isFinite(p.accumulatedMs) ? Math.max(0, p.accumulatedMs) : 0;
+        state.totalFocusMs = Number.isFinite(p.totalFocusMs) ? Math.max(0, p.totalFocusMs) : 0;
+        state.sessionsCompleted = Number.isFinite(p.sessionsCompleted) ? Math.max(0, p.sessionsCompleted) : 0;
+        if (p.phase === 'focus' || p.phase === 'break') state.phase = p.phase;
+        if (state.isRunning && !state.startedAt) state.isRunning = false;
+      } catch (e) {}
+    }
+
+    function applyUrlParams() {
+      const params = new URLSearchParams(window.location.search);
+      const launchLive = params.get('live') === '1';
+
+      if (params.has('channel')) state.config.channel = params.get('channel') || 'BRO_STUDIES';
+      if (params.has('title')) state.config.title = params.get('title') || 'MARATHON LIVE';
+      if (params.has('tagline')) state.config.tagline = params.get('tagline') || 'DEEP FOCUS • NO DISTRACTIONS';
+      if (params.has('social')) state.config.social = params.get('social') || '';
+      if (params.has('theme') && THEMES.some((t) => t.id === params.get('theme'))) {
+        state.config.theme = params.get('theme');
+      }
+      if (params.has('mode') && ['stopwatch', 'pomodoro50', 'pomodoro25', 'countdown'].includes(params.get('mode'))) {
+        if (params.get('mode') !== state.config.mode) {
+          state.config.mode = params.get('mode');
+          state.isRunning = false;
+          state.startedAt = null;
+          state.accumulatedMs = 0;
+          state.phase = 'focus';
+        }
+      }
+      if (params.has('display') && ['ultra', 'full', 'focus', 'presentation', 'minimal'].includes(params.get('display'))) {
+        state.config.displayMode = params.get('display');
+      }
+      if (params.has('agenda') && ['minimal', 'ticker', 'sidebar'].includes(params.get('agenda'))) {
+        state.config.agendaLayout = params.get('agenda');
+      }
+      if (params.has('progress') && ['circular', 'bar', 'none'].includes(params.get('progress'))) {
+        state.config.progressStyle = params.get('progress');
+      }
+      if (params.has('opacity')) {
+        const op = parseInt(params.get('opacity'), 10);
+        if (Number.isFinite(op)) state.config.bgOpacity = Math.max(0, Math.min(100, op));
+      }
+      if (params.has('tasks')) {
+        const list = (params.get('tasks') || '').split('||').map((s) => s.trim()).filter(Boolean);
+        if (list.length > 0) {
+          state.tasks = list.map((text, idx) => ({ id: Date.now() + idx, text, done: false }));
+        }
+      }
+
+      applyVisualThemeAndMotion();
+      syncSetupInputs();
+      renderThemeSwatches();
+      renderSetupAgendaList();
+      updateDirectLiveUrlField();
+
+      if (launchLive) {
+        switchView('live', false);
+      } else {
+        switchView('setup', false);
+      }
+    }
+
+    function buildDirectLiveUrl() {
+      const url = new URL(window.location.href);
+      url.search = '';
+      url.hash = '';
+      const p = new URLSearchParams();
+      p.set('live', '1');
+      p.set('channel', state.config.channel || 'BRO_STUDIES');
+      p.set('title', state.config.title || 'MARATHON LIVE');
+      p.set('theme', state.config.theme);
+      p.set('mode', state.config.mode);
+      p.set('display', state.config.displayMode);
+      p.set('agenda', state.config.agendaLayout);
+      p.set('progress', state.config.progressStyle);
+      p.set('opacity', String(state.config.bgOpacity));
+      if (state.config.social) p.set('social', state.config.social);
+      const tList = state.tasks.map((t) => t.text.trim()).filter(Boolean);
+      if (tList.length > 0) p.set('tasks', tList.join('||'));
+      url.search = p.toString();
+      return url.toString();
+    }
+
+    function updateDirectLiveUrlField() {
+      const el = document.getElementById('direct-live-url');
+      if (el) el.value = buildDirectLiveUrl();
+    }
+
+    // ==================== WEB AUDIO API CHIME ====================
+    function playChime() {
+      if (!state.config.soundEnabled) return;
+      try {
+        const AC = window.AudioContext || window.webkitAudioContext;
+        if (!AC) return;
+        if (!audioCtx) audioCtx = new AC();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const now = audioCtx.currentTime;
+        [
+          { f: 523.25, t: 0, d: 0.45 },
+          { f: 659.25, t: 0.16, d: 0.6 },
+          { f: 783.99, t: 0.34, d: 0.85 },
+        ].forEach(({ f, t, d }) => {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(f, now + t);
+          gain.gain.setValueAtTime(0.0001, now + t);
+          gain.gain.exponentialRampToValueAtTime(0.18, now + t + 0.03);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + t + d);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start(now + t);
+          osc.stop(now + t + d + 0.03);
+        });
+      } catch (e) {}
+    }
+
+    // ==================== DRIFT-FREE WALL-CLOCK TIMING ENGINE ====================
+    function formatClockMs(ms, decimals = false) {
+      const safe = Math.max(0, ms);
+      const totalSec = Math.floor(safe / 1000);
+      const h = Math.floor(totalSec / 3600);
+      const m = Math.floor((totalSec % 3600) / 60);
+      const s = totalSec % 60;
+      const str = `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+      if (!decimals) return str;
+      const tenths = Math.floor((safe % 1000) / 100);
+      return `${str}<span style="font-size:0.4em;opacity:0.85;margin-left:2px;">.${tenths}</span>`;
+    }
+
+    function computeLiveMs(now = Date.now()) {
+      let elapsedMs = state.accumulatedMs;
+      let focusMs = state.totalFocusMs;
+      if (state.isRunning && state.startedAt !== null) {
+        const delta = Math.max(0, now - state.startedAt);
+        elapsedMs += delta;
+        if (!isPomodoro() || state.phase === 'focus') {
+          focusMs += delta;
+        }
+      }
+      return { elapsedMs, focusMs };
+    }
+
+    function triggerHeroPulse() {
+      if (state.config.animIntensity === 'off') return;
+      const stage = document.getElementById('hero-timer-stage');
+      if (!stage) return;
+      stage.classList.remove('pulse-once');
+      void stage.offsetWidth;
+      stage.classList.add('pulse-once');
+    }
+
+    function checkClockTransitions(now = Date.now()) {
+      if (!state.isRunning || state.startedAt === null) return;
+
+      if (isPomodoro()) {
+        const targetMs = getBlockTargetMs();
+        const totalElapsed = state.accumulatedMs + Math.max(0, now - state.startedAt);
+        if (totalElapsed >= targetMs) {
+          const remainingCredit = Math.max(0, targetMs - state.accumulatedMs);
+          if (state.phase === 'focus') {
+            state.totalFocusMs += remainingCredit;
+            state.sessionsCompleted += 1;
+            state.phase = 'break';
+            showToast(`Focus complete — ${getPomodoroDurations().breakMin}m break started.`);
+          } else {
+            state.phase = 'focus';
+            showToast(`Break finished — ${getPomodoroDurations().focusMin}m focus started.`);
+          }
+          state.accumulatedMs = 0;
+          state.startedAt = now;
+          playChime();
+          triggerHeroPulse();
+          persistState();
+          renderLiveMeta();
+        }
+      } else if (state.config.mode === 'countdown') {
+        const targetMs = getCountdownTargetMs();
+        const totalElapsed = state.accumulatedMs + Math.max(0, now - state.startedAt);
+        if (totalElapsed >= targetMs) {
+          state.totalFocusMs += Math.max(0, targetMs - state.accumulatedMs);
+          state.accumulatedMs = targetMs;
+          state.isRunning = false;
+          state.startedAt = null;
+          state.sessionsCompleted += 1;
+          playChime();
+          triggerHeroPulse();
+          persistState();
+          stopClockLoop();
+          renderLiveMeta();
+          showToast('Marathon Countdown Complete!');
+        }
+      }
+    }
+
+    function renderClockFrame() {
+      const now = Date.now();
+      checkClockTransitions(now);
+
+      const { elapsedMs, focusMs } = computeLiveMs(now);
+      const timerEl = document.getElementById('live-hero-timer');
+      const focusEl = document.getElementById('stat-total-focus');
+      const goalEl = document.getElementById('stat-daily-goal');
+
+      let displayMs = elapsedMs;
+      let progressRatio = 0;
+
+      if (isPomodoro() || state.config.mode === 'countdown') {
+        const target = getBlockTargetMs();
+        displayMs = Math.max(0, target - elapsedMs);
+        progressRatio = target > 0 ? Math.min(1, Math.max(0, elapsedMs / target)) : 0;
+      } else {
+        const goalMs = Math.max(1, Number(state.config.dailyGoalHours) || 8) * 3600 * 1000;
+        progressRatio = Math.min(1, focusMs / goalMs);
+      }
+
+      if (timerEl) {
+        if (state.config.showDecimals) {
+          timerEl.innerHTML = formatClockMs(displayMs, true);
+        } else {
+          timerEl.textContent = formatClockMs(displayMs, false);
+        }
+      }
+
+      if (focusEl) focusEl.textContent = formatClockMs(focusMs, false);
+      if (goalEl) {
+        const goalMs = Math.max(1, Number(state.config.dailyGoalHours) || 8) * 3600 * 1000;
+        const goalPct = Math.min(100, Math.round((focusMs / goalMs) * 100));
+        goalEl.textContent = `${goalPct}%`;
+      }
+
+      updateProgressVisuals(progressRatio);
+
+      if (state.isRunning) {
+        rafId = window.requestAnimationFrame(renderClockFrame);
+      }
+    }
+
+    function updateProgressVisuals(ratio) {
+      const ringCircle = document.getElementById('ring-progress-circle');
+      const ringBadge = document.getElementById('ring-percent-badge');
+      const barFill = document.getElementById('horiz-progress-fill');
+      const isBreak = isPomodoro() && state.phase === 'break';
+      const pct = Math.round(ratio * 100);
+
+      if (ringCircle) {
+        ringCircle.setAttribute('stroke-dasharray', String(RING_CIRCUMFERENCE));
+        ringCircle.setAttribute('stroke-dashoffset', String(RING_CIRCUMFERENCE * (1 - ratio)));
+        ringCircle.setAttribute('stroke', isBreak ? 'var(--secondary)' : 'var(--primary)');
+      }
+
+      if (ringBadge) {
+        ringBadge.textContent = state.config.mode === 'stopwatch' ? `${pct}% OF DAILY GOAL` : `${pct}% COMPLETE`;
+        ringBadge.style.color = isBreak ? 'var(--secondary)' : 'var(--primary)';
+      }
+
+      if (barFill) {
+        if (state.config.mode === 'stopwatch') {
+          barFill.className = state.isRunning ? 'h-full rounded-full bar-sweep-active' : 'h-full rounded-full bar-sweep-paused';
+          barFill.style.width = state.isRunning ? '' : '100%';
+          barFill.style.background = '';
+        } else {
+          barFill.className = 'h-full rounded-full transition-all duration-200';
+          barFill.style.width = `${pct}%`;
+          barFill.style.background = isBreak
+            ? 'linear-gradient(90deg, var(--secondary), #f59e0b)'
+            : 'linear-gradient(90deg, var(--primary), var(--secondary))';
+        }
+      }
+    }
+
+    function startClockLoop() {
+      stopClockLoop();
+      rafId = window.requestAnimationFrame(renderClockFrame);
+    }
+
+    function stopClockLoop() {
+      if (rafId !== null) {
+        window.cancelAnimationFrame(rafId);
+        rafId = null;
+      }
+    }
+
+    function toggleTimer() {
+      if (state.isRunning) pauseTimer();
+      else startTimer();
+    }
+
+    function startTimer() {
+      if (state.isRunning) return;
+      if (state.config.mode === 'countdown' && state.accumulatedMs >= getCountdownTargetMs()) {
+        state.accumulatedMs = 0;
+      }
+      state.isRunning = true;
+      state.startedAt = Date.now();
+      triggerHeroPulse();
+      persistState();
+      renderLiveMeta();
+      startClockLoop();
+    }
+
+    function pauseTimer() {
+      if (!state.isRunning) return;
+      const now = Date.now();
+      const delta = state.startedAt !== null ? Math.max(0, now - state.startedAt) : 0;
+      state.accumulatedMs += delta;
+      if (!isPomodoro() || state.phase === 'focus') state.totalFocusMs += delta;
+      state.isRunning = false;
+      state.startedAt = null;
+      stopClockLoop();
+      persistState();
+      renderLiveMeta();
+      renderClockFrame();
+    }
+
+    function skipPhase() {
+      if (!isPomodoro()) return;
+      const now = Date.now();
+      if (state.isRunning && state.startedAt !== null && state.phase === 'focus') {
+        state.totalFocusMs += Math.max(0, now - state.startedAt);
+      }
+      if (state.phase === 'focus') {
+        state.sessionsCompleted += 1;
+        state.phase = 'break';
+      } else {
+        state.phase = 'focus';
+      }
+      state.accumulatedMs = 0;
+      if (state.isRunning) state.startedAt = now;
+      triggerHeroPulse();
+      persistState();
+      renderLiveMeta();
+      renderClockFrame();
+    }
+
+    function openResetModal() {
+      document.getElementById('reset-modal').classList.remove('hidden');
+    }
+
+    function closeResetModal() {
+      document.getElementById('reset-modal').classList.add('hidden');
+    }
+
+    function confirmResetTimer() {
+      closeResetModal();
+      stopClockLoop();
+      state.isRunning = false;
+      state.startedAt = null;
+      state.accumulatedMs = 0;
+      state.phase = 'focus';
+      persistState();
+      renderLiveMeta();
+      renderClockFrame();
+      showToast('Timer reset cleanly.');
+    }
+
+    // ==================== VISUAL STUDIO & AMBIENT PARTICLES ====================
+    function applyVisualThemeAndMotion() {
+      document.documentElement.setAttribute('data-theme', state.config.theme);
+      document.documentElement.setAttribute('data-anim', state.config.animIntensity);
+      document.documentElement.style.setProperty('--live-bg-alpha', String(state.config.bgOpacity / 100));
+
+      const opReadout = document.getElementById('opacity-readout');
+      if (opReadout) {
+        opReadout.textContent = state.config.bgOpacity === 0 ? '0% (Transparent)' : `${state.config.bgOpacity}%`;
+      }
+
+      syncAmbientParticles();
+    }
+
+    function renderThemeSwatches() {
+      const container = document.getElementById('theme-swatches');
+      if (!container) return;
+      container.innerHTML = THEMES.map((t) => {
+        const active = state.config.theme === t.id;
+        return `
+          <button
+            type="button"
+            onclick="selectTheme('${t.id}')"
+            class="text-left rounded-2xl p-3 border transition cursor-pointer ${
+              active
+                ? 'bg-white/15 border-white shadow-md shadow-black/25'
+                : 'bg-black/35 border-white/10 hover:border-white/30'
+            }"
+          >
+            <div class="flex items-center justify-between gap-2 mb-1.5">
+              <span class="text-xs font-bold text-white">${t.name}</span>
+              <div class="flex items-center gap-1">
+                <span class="h-3 w-3 rounded-full border border-white/30" style="background:${t.c1}"></span>
+                <span class="h-3 w-3 rounded-full" style="background:${t.c2}"></span>
+                <span class="h-3 w-3 rounded-full" style="background:${t.c3}"></span>
+              </div>
+            </div>
+            <p class="text-[11px] text-amber-50/75 leading-snug">${t.desc}</p>
+          </button>`;
+      }).join('');
+    }
+
+    function selectTheme(themeId) {
+      state.config.theme = themeId;
+      applyVisualThemeAndMotion();
+      renderThemeSwatches();
+      updateDirectLiveUrlField();
+      persistState();
+      if (state.view === 'live') {
+        renderLiveMeta();
+        renderClockFrame();
+      }
+    }
+
+    function cycleTheme() {
+      const idx = THEMES.findIndex((t) => t.id === state.config.theme);
+      const next = THEMES[(idx + 1) % THEMES.length];
+      selectTheme(next.id);
+      showToast(`Theme: ${next.name}`);
+    }
+
+    function syncAmbientParticles() {
+      const canvas = document.getElementById('ambient-canvas');
+      if (!canvas) return;
+      const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const shouldRun = state.view === 'live' && state.config.animIntensity === 'cinematic' && !reduced;
+
+      if (!shouldRun) {
+        canvas.classList.add('hidden');
+        if (particleRafId !== null) {
+          cancelAnimationFrame(particleRafId);
+          particleRafId = null;
+        }
+        return;
+      }
+
+      canvas.classList.remove('hidden');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      if (particles.length === 0) {
+        for (let i = 0; i < 36; i++) {
+          particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            r: 1 + Math.random() * 2,
+            vx: (Math.random() - 0.5) * 0.25,
+            vy: -0.15 - Math.random() * 0.35,
+            a: 0.16 + Math.random() * 0.3,
+          });
+        }
+      }
+
+      const ctx = canvas.getContext('2d');
+      function drawParticles() {
+        if (state.view !== 'live' || state.config.animIntensity !== 'cinematic') return;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        const rgb = getComputedStyle(document.documentElement).getPropertyValue('--particle-rgb').trim() || '254, 243, 199';
+        particles.forEach((p) => {
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.y < -10) { p.y = canvas.height + 10; p.x = Math.random() * canvas.width; }
+          if (p.x < -10) p.x = canvas.width + 10;
+          if (p.x > canvas.width + 10) p.x = -10;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${rgb}, ${p.a})`;
+          ctx.fill();
+        });
+        particleRafId = requestAnimationFrame(drawParticles);
+      }
+
+      if (particleRafId === null) {
+        particleRafId = requestAnimationFrame(drawParticles);
+      }
+    }
+
+    // ==================== STUDIO SETUP HANDLERS ====================
+    function toggleQuickGuide() {
+      const body = document.getElementById('quick-guide-body');
+      const label = document.getElementById('guide-toggle-label');
+      const hidden = body.classList.toggle('hidden');
+      label.textContent = hidden ? 'Show ▼' : 'Hide ▲';
+    }
+
+    function syncSetupInputs() {
+      document.getElementById('in-channel').value = state.config.channel;
+      document.getElementById('in-title').value = state.config.title;
+      document.getElementById('in-tagline').value = state.config.tagline;
+      document.getElementById('in-social').value = state.config.social;
+      document.getElementById('in-logo').value = state.config.logoUrl;
+      document.getElementById('in-goal-hours').value = state.config.dailyGoalHours;
+      document.getElementById('in-mode').value = state.config.mode;
+      document.getElementById('in-cd-hours').value = state.config.countdownHours;
+      document.getElementById('in-cd-mins').value = state.config.countdownMins;
+      document.getElementById('in-sound').checked = state.config.soundEnabled;
+      document.getElementById('in-decimals').checked = state.config.showDecimals;
+      document.getElementById('in-progress-style').value = state.config.progressStyle;
+      document.getElementById('in-anim').value = state.config.animIntensity;
+      document.getElementById('in-display-mode').value = state.config.displayMode;
+      document.getElementById('in-agenda-layout').value = state.config.agendaLayout;
+      document.getElementById('in-opacity').value = state.config.bgOpacity;
+
+      document.getElementById('countdown-box').classList.toggle('hidden', state.config.mode !== 'countdown');
+      document.getElementById('mode-helper-hint').textContent = MODE_HINTS[state.config.mode] || '';
+      applyVisualThemeAndMotion();
+    }
+
+    function handleTimerModeChange() {
+      const nextMode = document.getElementById('in-mode').value;
+      const changed = nextMode !== state.config.mode;
+      state.config.mode = nextMode;
+      document.getElementById('countdown-box').classList.toggle('hidden', nextMode !== 'countdown');
+      document.getElementById('mode-helper-hint').textContent = MODE_HINTS[nextMode] || '';
+      if (changed) {
+        stopClockLoop();
+        state.isRunning = false;
+        state.startedAt = null;
+        state.accumulatedMs = 0;
+        state.phase = 'focus';
+      }
+      persistState();
+      updateDirectLiveUrlField();
+    }
+
+    function syncConfigFromInputs(resetBlockIfCountdownChanged = false) {
+      state.config.channel = (document.getElementById('in-channel').value || '').trim() || 'BRO_STUDIES';
+      state.config.title = (document.getElementById('in-title').value || '').trim() || 'MARATHON LIVE';
+      state.config.tagline = (document.getElementById('in-tagline').value || '').trim() || 'DEEP FOCUS • NO DISTRACTIONS';
+      state.config.social = (document.getElementById('in-social').value || '').trim();
+      state.config.logoUrl = (document.getElementById('in-logo').value || '').trim();
+      state.config.dailyGoalHours = Math.max(1, Math.min(24, parseFloat(document.getElementById('in-goal-hours').value) || 8));
+      state.config.countdownHours = Math.max(0, Math.min(99, parseInt(document.getElementById('in-cd-hours').value, 10) || 0));
+      state.config.countdownMins = Math.max(0, Math.min(59, parseInt(document.getElementById('in-cd-mins').value, 10) || 0));
+      state.config.soundEnabled = document.getElementById('in-sound').checked;
+      state.config.showDecimals = document.getElementById('in-decimals').checked;
+      state.config.progressStyle = document.getElementById('in-progress-style').value;
+      state.config.animIntensity = document.getElementById('in-anim').value;
+      state.config.displayMode = document.getElementById('in-display-mode').value;
+      state.config.agendaLayout = document.getElementById('in-agenda-layout').value;
+      state.config.bgOpacity = Math.max(0, Math.min(100, parseInt(document.getElementById('in-opacity').value, 10) || 0));
+
+      if (resetBlockIfCountdownChanged && state.config.mode === 'countdown') {
+        stopClockLoop();
+        state.isRunning = false;
+        state.startedAt = null;
+        state.accumulatedMs = 0;
+      }
+
+      applyVisualThemeAndMotion();
+      persistState();
+      updateDirectLiveUrlField();
+    }
+
+    function renderSetupAgendaList() {
+      const listEl = document.getElementById('setup-agenda-list');
+      const countEl = document.getElementById('setup-task-count');
+      if (countEl) countEl.textContent = `${state.tasks.length} task${state.tasks.length === 1 ? '' : 's'}`;
+      if (!listEl) return;
+
+      if (state.tasks.length === 0) {
+        listEl.innerHTML = `<li class="rounded-xl bg-black/35 border border-dashed border-white/15 px-4 py-3 text-center text-xs text-amber-100/60">No tasks yet. Add your first study block above.</li>`;
+        return;
+      }
+
+      listEl.innerHTML = state.tasks
+        .map(
+          (t, i) => `
+          <li class="flex items-center justify-between gap-2 rounded-xl bg-black/35 border border-white/10 px-3 py-2">
+            <button type="button" onclick="toggleTaskDone(${i})" class="flex items-center gap-2.5 min-w-0 text-left flex-1 cursor-pointer">
+              <span class="h-4 w-4 rounded flex items-center justify-center text-[10px] font-bold border shrink-0 ${
+                t.done ? 'bg-[#F29F58] border-[#F29F58] text-[#1c0f08]' : 'border-amber-100/40 text-transparent'
+              }">✓</span>
+              <span class="text-xs font-medium truncate ${t.done ? 'line-through text-amber-100/45' : 'text-white'}">${escapeHtml(t.text)}</span>
+            </button>
+            <div class="flex items-center gap-1 shrink-0">
+              <button type="button" onclick="moveTask(${i}, -1)" title="Move up" class="px-1.5 py-0.5 rounded bg-white/10 hover:bg-white/20 text-[10px] text-white cursor-pointer">▲</button>
+              <button type="button" onclick="moveTask(${i}, 1)" title="Move down" class="px-1.5 py-0.5 rounded bg-white/10 hover:bg-white/20 text-[10px] text-white cursor-pointer">▼</button>
+              <button type="button" onclick="removeTask(${i})" title="Remove" class="px-1.5 py-0.5 rounded bg-white/10 hover:text-amber-200 text-xs font-bold text-amber-100/75 cursor-pointer">×</button>
+            </div>
+          </li>`
+        )
+        .join('');
+    }
+
+    function handleSetupAddTask(e) {
+      e.preventDefault();
+      const input = document.getElementById('setup-new-task');
+      const val = (input.value || '').trim();
+      if (!val) return;
+      state.tasks.push({ id: Date.now(), text: val, done: false });
+      input.value = '';
+      persistState();
+      renderSetupAgendaList();
+      updateDirectLiveUrlField();
+    }
+
+    function moveTask(index, dir) {
+      const target = index + dir;
+      if (target < 0 || target >= state.tasks.length) return;
+      const tmp = state.tasks[index];
+      state.tasks[index] = state.tasks[target];
+      state.tasks[target] = tmp;
+      persistState();
+      renderSetupAgendaList();
+      updateDirectLiveUrlField();
+    }
+
+    function removeTask(index) {
+      state.tasks.splice(index, 1);
+      persistState();
+      renderSetupAgendaList();
+      renderLiveAgenda();
+      updateDirectLiveUrlField();
+    }
+
+    function toggleTaskDone(index) {
+      if (!state.tasks[index]) return;
+      state.tasks[index].done = !state.tasks[index].done;
+      persistState();
+      renderSetupAgendaList();
+      renderLiveAgenda();
+    }
+
+    function uncheckAllTasks() {
+      state.tasks.forEach((t) => (t.done = false));
+      persistState();
+      renderSetupAgendaList();
+      renderLiveAgenda();
+    }
+
+    function restoreDefaultTasks() {
+      state.tasks = DEFAULT_TASKS.map((t) => ({ ...t }));
+      persistState();
+      renderSetupAgendaList();
+      renderLiveAgenda();
+      updateDirectLiveUrlField();
+    }
+
+    // ==================== LIVE BROADCAST RENDERING ====================
+    function launchLiveBroadcast() {
+      syncConfigFromInputs();
+      switchView('live', true);
+    }
+
+    function switchView(target, updateUrl = true) {
+      state.view = target;
+      const setupEl = document.getElementById('setup-view');
+      const liveEl = document.getElementById('live-view');
+
+      if (target === 'live') {
+        setupEl.classList.add('hidden');
+        liveEl.classList.remove('hidden');
+        document.documentElement.classList.add('live-mode');
+        if (state.alphaGrid) document.documentElement.classList.add('alpha-grid-on');
+
+        applyVisualThemeAndMotion();
+        renderLiveMeta();
+        renderLiveAgenda();
+        renderClockFrame();
+        if (state.isRunning) startClockLoop();
+        resetIdleDockTimer();
+
+        if (updateUrl) {
+          try { window.history.replaceState({}, '', buildDirectLiveUrl()); } catch (e) {}
+        }
+      } else {
+        liveEl.classList.add('hidden');
+        setupEl.classList.remove('hidden');
+        document.documentElement.classList.remove('live-mode', 'alpha-grid-on');
+        document.body.classList.remove('dock-hidden');
+        clearTimeout(idleTimerId);
+        syncAmbientParticles();
+        syncSetupInputs();
+        renderSetupAgendaList();
+        updateDirectLiveUrlField();
+      }
+    }
+
+    function handleLogoError() {
+      document.getElementById('live-logo-img').classList.add('hidden');
+      document.getElementById('live-logo-initials').classList.remove('hidden');
+    }
+
+    function renderLiveMeta() {
+      const liveView = document.getElementById('live-view');
+      const dm = state.config.displayMode;
+      const isBreak = isPomodoro() && state.phase === 'break';
+
+      liveView.setAttribute('data-display', dm);
+      liveView.setAttribute('data-phase', isBreak ? 'break' : 'focus');
+      liveView.setAttribute('data-running', String(state.isRunning));
+
+      const ch = state.config.channel || 'BRO_STUDIES';
+      document.getElementById('live-channel-name').textContent = ch;
+      document.getElementById('live-tagline').textContent = state.config.tagline || 'DEEP FOCUS • NO DISTRACTIONS';
+      document.getElementById('live-session-title').textContent = state.config.title || 'MARATHON LIVE';
+
+      const socialEl = document.getElementById('live-social-handle');
+      if (state.config.social) {
+        socialEl.textContent = state.config.social;
+        socialEl.classList.remove('hidden');
+      } else {
+        socialEl.classList.add('hidden');
+      }
+
+      const initials = ch.replace(/[^A-Za-z0-9]/g, '').slice(0, 2).toUpperCase() || 'BS';
+      document.getElementById('live-logo-initials').textContent = initials;
+      const logoImg = document.getElementById('live-logo-img');
+      if (state.config.logoUrl) {
+        logoImg.src = state.config.logoUrl;
+        logoImg.classList.remove('hidden');
+        document.getElementById('live-logo-initials').classList.add('hidden');
+      } else {
+        logoImg.classList.add('hidden');
+        document.getElementById('live-logo-initials').classList.remove('hidden');
+      }
+
+      const phasePill = document.getElementById('live-phase-pill');
+      const phaseDot = document.getElementById('live-phase-dot');
+      const phaseText = document.getElementById('live-phase-text');
+      const skipBtn = document.getElementById('dock-skip-btn');
+
+      if (state.config.mode === 'stopwatch') {
+        phaseText.textContent = 'OPEN MARATHON';
+        phasePill.style.borderColor = 'rgba(var(--primary-rgb), 0.4)';
+        phaseText.style.color = 'var(--primary)';
+        phaseDot.style.background = 'var(--primary)';
+        skipBtn.classList.add('hidden');
+      } else if (isPomodoro()) {
+        const d = getPomodoroDurations();
+        phaseText.textContent = isBreak ? `BREAK PHASE • ${d.breakMin}M` : `FOCUS PHASE • ${d.focusMin}M`;
+        phasePill.style.borderColor = isBreak ? 'rgba(var(--secondary-rgb), 0.5)' : 'rgba(var(--primary-rgb), 0.4)';
+        phaseText.style.color = isBreak ? 'var(--secondary)' : 'var(--primary)';
+        phaseDot.style.background = isBreak ? 'var(--secondary)' : 'var(--primary)';
+        skipBtn.classList.remove('hidden');
+      } else {
+        phaseText.textContent = `MARATHON COUNTDOWN • ${state.config.countdownHours}H ${state.config.countdownMins}M`;
+        phasePill.style.borderColor = 'rgba(var(--secondary-rgb), 0.5)';
+        phaseText.style.color = 'var(--secondary)';
+        phaseDot.style.background = 'var(--secondary)';
+        skipBtn.classList.add('hidden');
+      }
+
+      const topBar = document.getElementById('live-top-bar');
+      const brandBlock = document.getElementById('live-brand-block');
+      const statusBlock = document.getElementById('live-status-block');
+      const titleGroup = document.getElementById('live-title-group');
+      const telemetryStrip = document.getElementById('live-telemetry-strip');
+      const ringWrap = document.getElementById('ring-wrapper');
+      const ringBadge = document.getElementById('ring-percent-badge');
+      const horizWrap = document.getElementById('horiz-progress-wrap');
+
+      const showTop = dm === 'ultra' || dm === 'full' || dm === 'presentation';
+      topBar.classList.toggle('hidden', !showTop);
+      brandBlock.classList.toggle('hidden', dm === 'presentation');
+      statusBlock.classList.toggle('hidden', dm === 'focus' || dm === 'minimal');
+
+      titleGroup.classList.toggle('hidden', dm === 'minimal');
+      telemetryStrip.classList.toggle('hidden', !(dm === 'ultra' || dm === 'full'));
+
+      const allowProgress = dm !== 'minimal' && dm !== 'presentation';
+      const showRing = allowProgress && state.config.progressStyle === 'circular';
+      const showBar = allowProgress && state.config.progressStyle === 'bar';
+      ringWrap.classList.toggle('hidden', !showRing);
+      ringBadge.classList.toggle('hidden', !showRing);
+      horizWrap.classList.toggle('hidden', !showBar);
+
+      document.getElementById('stat-sessions').textContent = String(state.sessionsCompleted).padStart(2, '0');
+
+      const startBtn = document.getElementById('dock-start-btn');
+      if (state.isRunning) {
+        startBtn.textContent = 'Pause';
+        startBtn.style.background = 'var(--secondary)';
+        startBtn.style.color = '#1c0f08';
+      } else {
+        startBtn.textContent = state.accumulatedMs > 0 ? 'Resume' : 'Start';
+        startBtn.style.background = 'var(--primary)';
+        startBtn.style.color = '#1c0f08';
+      }
+
+      document.querySelectorAll('.dm-btn').forEach((btn) => {
+        const active = btn.getAttribute('data-dm') === dm;
+        btn.style.background = active ? 'var(--primary)' : 'transparent';
+        btn.style.color = active ? '#1c0f08' : '#fde68a';
+      });
+
+      document.getElementById('dock-sound-btn').textContent = state.config.soundEnabled ? 'Sound: ON' : 'Sound: OFF';
+      document.getElementById('dock-awake-btn').textContent = state.wakeLockActive ? 'Awake: ON' : 'Awake: OFF';
+      document.getElementById('dock-grid-btn').style.color = state.alphaGrid ? 'var(--secondary)' : '';
+
+      renderLiveAgenda();
+    }
+
+    function renderLiveAgenda() {
+      const dm = state.config.displayMode;
+      const layout = state.config.agendaLayout;
+      const bottomWrap = document.getElementById('live-bottom-agenda');
+      const minBar = document.getElementById('agenda-minimal-bar');
+      const tickerBar = document.getElementById('agenda-ticker-bar');
+      const sidebar = document.getElementById('live-agenda-sidebar');
+
+      const total = state.tasks.length;
+      const done = state.tasks.filter((t) => t.done).length;
+      const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+
+      document.getElementById('stat-tasks-done').textContent = `${done} / ${total}`;
+      document.getElementById('sidebar-pill').textContent = `${done} / ${total}`;
+      document.getElementById('sidebar-progress').style.width = `${pct}%`;
+
+      if (dm === 'presentation' || dm === 'minimal') {
+        bottomWrap.classList.add('hidden');
+        sidebar.classList.add('hidden');
+        return;
+      }
+
+      const effectiveLayout = dm === 'focus' ? 'minimal' : layout;
+
+      if (effectiveLayout === 'sidebar') {
+        bottomWrap.classList.add('hidden');
+        sidebar.classList.remove('hidden');
+        const ul = document.getElementById('sidebar-task-list');
+        if (total === 0) {
+          ul.innerHTML = `<li class="text-xs text-amber-100/60 text-center py-2">No tasks scheduled.</li>`;
+        } else {
+          ul.innerHTML = state.tasks
+            .map(
+              (t, i) => `
+              <li onclick="toggleTaskDone(${i})" class="flex items-center gap-2.5 rounded-xl px-3 py-2 border transition cursor-pointer ${
+                t.done ? 'bg-black/25 border-white/[0.06] text-amber-100/45' : 'bg-black/40 hover:bg-white/10 border-white/15 text-white'
+              }">
+                <span class="h-4 w-4 rounded flex items-center justify-center text-[10px] font-bold border shrink-0 ${
+                  t.done ? 'bg-[#F29F58] border-[#F29F58] text-[#1c0f08]' : 'border-amber-100/50 text-transparent'
+                }">✓</span>
+                <span class="text-xs font-medium leading-snug ${t.done ? 'line-through opacity-55' : ''}">${escapeHtml(t.text)}</span>
+              </li>`
+            )
+            .join('');
+        }
+      } else if (effectiveLayout === 'ticker') {
+        sidebar.classList.add('hidden');
+        bottomWrap.classList.remove('hidden');
+        minBar.classList.add('hidden');
+        tickerBar.classList.remove('hidden');
+
+        const firstOpenIdx = state.tasks.findIndex((t) => !t.done);
+        const tickerEl = document.getElementById('ticker-items');
+        tickerEl.innerHTML = state.tasks
+          .map((t, i) => {
+            const isActive = i === firstOpenIdx;
+            return `
+              <button
+                type="button"
+                onclick="toggleTaskDone(${i})"
+                class="shrink-0 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl border text-xs font-medium transition cursor-pointer ${
+                  t.done
+                    ? 'bg-black/25 border-white/10 text-amber-100/45 line-through'
+                    : isActive
+                    ? 'bg-white/15 text-white font-semibold'
+                    : 'bg-black/30 border-white/15 text-amber-50 hover:bg-white/10'
+                }"
+                style="${isActive ? 'border-color: var(--primary);' : ''}"
+              >
+                <span class="h-2 w-2 rounded-full" style="background:${t.done ? 'rgba(255,255,255,0.25)' : isActive ? 'var(--primary)' : 'rgba(255,255,255,0.4)'}"></span>
+                <span>${escapeHtml(t.text)}</span>
+              </button>`;
+          })
+          .join('');
+      } else {
+        sidebar.classList.add('hidden');
+        bottomWrap.classList.remove('hidden');
+        tickerBar.classList.add('hidden');
+        minBar.classList.remove('hidden');
+
+        const remaining = state.tasks.filter((t) => !t.done);
+        const currentEl = document.getElementById('minimal-current-task');
+        const nextEl = document.getElementById('minimal-next-task');
+
+        if (remaining.length > 0) {
+          currentEl.textContent = remaining[0].text;
+          nextEl.textContent = remaining.length > 1 ? remaining[1].text : 'Final Block — Finish Strong';
+        } else if (total > 0) {
+          currentEl.textContent = 'All Agenda Tasks Completed!';
+          nextEl.textContent = 'Bonus Deep Focus';
+        } else {
+          currentEl.textContent = 'Open Deep Focus Session';
+          nextEl.textContent = 'Add tasks in Setup';
+        }
+      }
+    }
+
+    function completeCurrentTask() {
+      const idx = state.tasks.findIndex((t) => !t.done);
+      if (idx === -1) return;
+      state.tasks[idx].done = true;
+      persistState();
+      renderLiveAgenda();
+      renderSetupAgendaList();
+      showToast(`Completed: ${state.tasks[idx].text}`);
+    }
+
+    function handleLiveQuickAdd(e) {
+      e.preventDefault();
+      const input = document.getElementById('live-quick-add');
+      const val = (input.value || '').trim();
+      if (!val) return;
+      state.tasks.push({ id: Date.now(), text: val, done: false });
+      input.value = '';
+      persistState();
+      renderLiveAgenda();
+      renderSetupAgendaList();
+    }
+
+    // ==================== BROADCAST DOCK CONTROLS ====================
+    function setDisplayMode(dm) {
+      state.config.displayMode = dm;
+      persistState();
+      renderLiveMeta();
+      const names = { ultra: 'Ultra Cinematic', full: 'Full Broadcast', focus: 'Focus Mode', presentation: 'Presentation Mode', minimal: 'Minimal Mode' };
+      showToast(`Layout: ${names[dm]}`);
+    }
+
+    function cycleAgendaLayout() {
+      const order = ['minimal', 'ticker', 'sidebar'];
+      const next = order[(order.indexOf(state.config.agendaLayout) + 1) % order.length];
+      state.config.agendaLayout = next;
+      persistState();
+      renderLiveAgenda();
+      const labels = { minimal: 'Minimal (Current + Next)', ticker: 'Bottom Ticker', sidebar: 'Right Sidebar' };
+      showToast(`Agenda: ${labels[next]}`);
+    }
+
+    function toggleSound() {
+      state.config.soundEnabled = !state.config.soundEnabled;
+      persistState();
+      renderLiveMeta();
+      if (state.config.soundEnabled) playChime();
+      showToast(state.config.soundEnabled ? 'Chime Unmuted' : 'Chime Muted');
+    }
+
+    function toggleAlphaGrid() {
+      state.alphaGrid = !state.alphaGrid;
+      document.documentElement.classList.toggle('alpha-grid-on', state.alphaGrid && state.view === 'live');
+      renderLiveMeta();
+    }
+
+    function toggleFullscreen() {
+      try {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen();
+        } else {
+          document.exitFullscreen();
+        }
+      } catch (e) {
+        showToast('Fullscreen unavailable in this frame.');
+      }
+    }
+
+    async function toggleWakeLock() {
+      try {
+        if (!('wakeLock' in navigator)) {
+          showToast('Wake Lock not supported by this browser.');
+          return;
+        }
+        if (wakeLockSentinel) {
+          await wakeLockSentinel.release();
+          wakeLockSentinel = null;
+          state.wakeLockActive = false;
+          renderLiveMeta();
+          showToast('Screen Wake Lock released.');
+        } else {
+          wakeLockSentinel = await navigator.wakeLock.request('screen');
+          state.wakeLockActive = true;
+          wakeLockSentinel.addEventListener('release', () => {
+            state.wakeLockActive = false;
+            wakeLockSentinel = null;
+            renderLiveMeta();
+          });
+          renderLiveMeta();
+          showToast('Screen Awake enabled for long marathon.');
+        }
+      } catch (e) {
+        showToast('Wake Lock requires active page focus.');
+      }
+    }
+
+    function toggleShortcutsPopover(forceState) {
+      const el = document.getElementById('shortcuts-popover');
+      if (typeof forceState === 'boolean') {
+        el.classList.toggle('hidden', !forceState);
+      } else {
+        el.classList.toggle('hidden');
+      }
+    }
+
+    function resetIdleDockTimer() {
+      if (state.view !== 'live' || state.dockLockedHidden) return;
+      document.body.classList.remove('dock-hidden');
+      clearTimeout(idleTimerId);
+      idleTimerId = setTimeout(() => {
+        if (state.view === 'live') {
+          const active = document.activeElement ? document.activeElement.tagName.toUpperCase() : '';
+          if (active !== 'INPUT' && active !== 'TEXTAREA') {
+            document.body.classList.add('dock-hidden');
+            toggleShortcutsPopover(false);
+          }
+        }
+      }, 3000);
+    }
+
+    function toggleLockDockHidden() {
+      state.dockLockedHidden = !state.dockLockedHidden;
+      if (state.dockLockedHidden) {
+        clearTimeout(idleTimerId);
+        document.body.classList.add('dock-hidden');
+        toggleShortcutsPopover(false);
+      } else {
+        document.body.classList.remove('dock-hidden');
+        resetIdleDockTimer();
+      }
+    }
+
+    // ==================== CLIPBOARD & STANDALONE HTML EXPORT ====================
+    function copyViaExecCommand(text) {
+      try {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'fixed';
+        ta.style.top = '-9999px';
+        document.body.appendChild(ta);
+        ta.select();
+        const ok = document.execCommand('copy');
+        document.body.removeChild(ta);
+        return ok;
+      } catch (e) {
+        return false;
+      }
+    }
+
+    function copyDirectLiveLink() {
+      if (copyViaExecCommand(buildDirectLiveUrl())) {
+        showToast('Direct Live Link copied to clipboard.');
+      } else {
+        showToast('Select and copy the URL manually.');
+      }
+    }
+
+    function buildExportHtmlString() {
+      const clone = document.documentElement.cloneNode(true);
+      clone.classList.remove('live-mode', 'alpha-grid-on');
+      const bodyClone = clone.querySelector('body');
+      if (bodyClone) bodyClone.classList.remove('dock-hidden');
+
+      ['export-modal', 'reset-modal', 'toast-box', 'shortcuts-popover'].forEach((id) => {
+        const n = clone.querySelector(`#${id}`);
+        if (n) n.classList.add('hidden');
+      });
+
+      const area = clone.querySelector('#export-code-area');
+      if (area) area.textContent = '';
+
+      const bakedNode = clone.querySelector('#baked-config-json');
+      if (bakedNode) {
+        bakedNode.textContent = JSON.stringify({ config: state.config, tasks: state.tasks });
+      }
+
+      return '<!DOCTYPE html>\n' + clone.outerHTML;
+    }
+
+    function openExportModal() {
+      syncConfigFromInputs();
+      document.getElementById('export-code-area').value = buildExportHtmlString();
+      document.getElementById('export-modal').classList.remove('hidden');
+    }
+
+    function closeExportModal() {
+      document.getElementById('export-modal').classList.add('hidden');
+    }
+
+    function copyExportHtml() {
+      const val = document.getElementById('export-code-area').value;
+      if (val && copyViaExecCommand(val)) {
+        showToast('Standalone HTML copied.');
+      }
+    }
+
+    function downloadStandaloneHtml() {
+      try {
+        const html = buildExportHtmlString();
+        const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'bro_studies_marathon_live.html';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+        showToast('Downloading bro_studies_marathon_live.html...');
+      } catch (e) {
+        showToast('Download blocked in this preview frame.');
+      }
+    }
+
+    // ==================== SAFE KEYBOARD SHORTCUTS & EVENTS ====================
+    document.addEventListener('keydown', (e) => {
+      if (state.view !== 'live') return;
+      const el = e.target;
+      const tag = el && el.tagName ? el.tagName.toUpperCase() : '';
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || (el && el.isContentEditable)) return;
+
+      if (e.code === 'Space') {
+        e.preventDefault();
+        toggleTimer();
+      } else if (e.key === 'r' || e.key === 'R') {
+        e.preventDefault();
+        openResetModal();
+      } else if (e.key === 'f' || e.key === 'F') {
+        e.preventDefault();
+        toggleFullscreen();
+      } else if (e.key === 'h' || e.key === 'H') {
+        e.preventDefault();
+        toggleLockDockHidden();
+      } else if (e.key === 'g' || e.key === 'G') {
+        e.preventDefault();
+        toggleAlphaGrid();
+      } else if (e.key === 'm' || e.key === 'M') {
+        e.preventDefault();
+        toggleSound();
+      } else if (e.key === '1') {
+        setDisplayMode('ultra');
+      } else if (e.key === '2') {
+        setDisplayMode('full');
+      } else if (e.key === '3') {
+        setDisplayMode('focus');
+      } else if (e.key === '4') {
+        setDisplayMode('presentation');
+      } else if (e.key === '5') {
+        setDisplayMode('minimal');
+      }
+    });
+
+    ['mousemove', 'mousedown', 'touchstart'].forEach((evt) => {
+      window.addEventListener(
+        evt,
+        () => {
+          if (state.view === 'live' && !state.dockLockedHidden) resetIdleDockTimer();
+        },
+        { passive: true }
+      );
+    });
+
+    window.addEventListener('resize', () => {
+      if (state.view === 'live' && state.config.animIntensity === 'cinematic') {
+        const c = document.getElementById('ambient-canvas');
+        if (c) { c.width = window.innerWidth; c.height = window.innerHeight; }
+      }
+    });
+
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden && state.isRunning) renderClockFrame();
+    });
+
+    // ==================== BOOTSTRAP ====================
+    window.addEventListener('DOMContentLoaded', () => {
+      loadBakedDefaults();
+      loadPersistedState();
+      applyUrlParams();
+    });
+  </script>
+</body>
+</html>
